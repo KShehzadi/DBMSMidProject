@@ -26,11 +26,20 @@ namespace DBMSProject
 
         private void lbl_clopage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            CLO c = new CLO();
+            c.Show();
+            this.Hide();
         }
 
         private void lbl_rubric_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           
+            if(Rubric.Rubric1 == null)
+            {
+                Rubric.Rubric1 = new Rubric();
+
+            }
+            Rubric.Rubric1.Show();
+            this.Hide();
         }
     }
 }
