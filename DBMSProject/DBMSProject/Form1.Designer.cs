@@ -39,10 +39,10 @@
             this.lbl_Student.AutoSize = true;
             this.lbl_Student.Location = new System.Drawing.Point(47, 86);
             this.lbl_Student.Name = "lbl_Student";
-            this.lbl_Student.Size = new System.Drawing.Size(66, 13);
+            this.lbl_Student.Size = new System.Drawing.Size(137, 13);
             this.lbl_Student.TabIndex = 0;
             this.lbl_Student.TabStop = true;
-            this.lbl_Student.Text = "Add Student";
+            this.lbl_Student.Text = "Student Management Page";
             this.lbl_Student.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_Student_LinkClicked);
             // 
             // lbl_clopage
@@ -50,10 +50,10 @@
             this.lbl_clopage.AutoSize = true;
             this.lbl_clopage.Location = new System.Drawing.Point(47, 125);
             this.lbl_clopage.Name = "lbl_clopage";
-            this.lbl_clopage.Size = new System.Drawing.Size(56, 13);
+            this.lbl_clopage.Size = new System.Drawing.Size(121, 13);
             this.lbl_clopage.TabIndex = 1;
             this.lbl_clopage.TabStop = true;
-            this.lbl_clopage.Text = "CLO Page";
+            this.lbl_clopage.Text = "CLO Management Page";
             this.lbl_clopage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_clopage_LinkClicked);
             // 
             // lbl_rubric
@@ -61,10 +61,10 @@
             this.lbl_rubric.AutoSize = true;
             this.lbl_rubric.Location = new System.Drawing.Point(47, 170);
             this.lbl_rubric.Name = "lbl_rubric";
-            this.lbl_rubric.Size = new System.Drawing.Size(66, 13);
+            this.lbl_rubric.Size = new System.Drawing.Size(131, 13);
             this.lbl_rubric.TabIndex = 2;
             this.lbl_rubric.TabStop = true;
-            this.lbl_rubric.Text = "Rubric Page";
+            this.lbl_rubric.Text = "Rubric Management Page";
             this.lbl_rubric.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_rubric_LinkClicked);
             // 
             // linkLabel1
@@ -72,10 +72,10 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(50, 209);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(133, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(156, 13);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Assessment Creation Page";
+            this.linkLabel1.Text = "Assessment Management Page";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Form1

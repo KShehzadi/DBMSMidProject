@@ -33,12 +33,8 @@ namespace DBMSProject
 
         private void lbl_rubric_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(Rubric.Rubric1 == null)
-            {
-                Rubric.Rubric1 = new Rubric();
-
-            }
-            Rubric.Rubric1.Show();
+            Rubric r= new Rubric();
+            r.Show();
             this.Hide();
         }
 
