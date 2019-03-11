@@ -10,3 +10,16 @@ C:\Users\Dc\documents\visual studio 2015\Projects\DBMSProject\DBMSProject\obj\De
 C:\Users\Dc\documents\visual studio 2015\Projects\DBMSProject\DBMSProject\obj\Debug\DBMSProject.pdb
 C:\Users\Dc\documents\visual studio 2015\Projects\DBMSProject\DBMSProject\obj\Debug\DBMSProject.CLO.resources
 C:\Users\Dc\documents\visual studio 2015\Projects\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Rubric.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\bin\Debug\DBMSProject.exe.config
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.exe
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.pdb
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\bin\Debug\DBMSProject.exe
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\bin\Debug\DBMSProject.pdb
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csprojResolveAssemblyReference.cache
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AddStudent.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.CLO.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Form1.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Properties.Resources.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Rubric.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csproj.GenerateResource.Cache
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AssessmentPage.resources

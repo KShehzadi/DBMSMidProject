@@ -164,6 +164,12 @@ namespace DBMSProject
             dataGridView1.DataSource = dt;
 
         }
-        
+
+        private void lbl_index_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
+            this.Hide();
+        }
     }
 }
