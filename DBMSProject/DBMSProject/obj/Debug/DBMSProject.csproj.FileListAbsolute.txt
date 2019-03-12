@@ -23,3 +23,5 @@ C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.P
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Rubric.resources
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csproj.GenerateResource.Cache
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AssessmentPage.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AssessmentComponent.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Classes.resources

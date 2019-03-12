@@ -23,7 +23,7 @@ namespace DBMSProject
         private void Rubric_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'projectBDataSet3.Rubric' table. You can move, or remove it, as needed.
-            this.rubricTableAdapter.Fill(this.projectBDataSet3.Rubric);
+          
             String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
             SqlConnection conn = new SqlConnection(conURL);
             conn.Open();

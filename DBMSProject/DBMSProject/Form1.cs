@@ -44,5 +44,13 @@ namespace DBMSProject
             a.Show();
             this.Hide();
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AssessmentComponent a = new AssessmentComponent();
+            a.Show();
+            this.Hide();
+
+        }
     }
 }
