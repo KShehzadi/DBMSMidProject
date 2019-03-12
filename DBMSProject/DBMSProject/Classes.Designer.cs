@@ -50,17 +50,18 @@
             // 
             // btn_insert
             // 
-            this.btn_insert.Location = new System.Drawing.Point(197, 77);
+            this.btn_insert.Location = new System.Drawing.Point(197, 87);
             this.btn_insert.Name = "btn_insert";
             this.btn_insert.Size = new System.Drawing.Size(75, 23);
             this.btn_insert.TabIndex = 0;
-            this.btn_insert.Text = "Insert Class";
+            this.btn_insert.Text = "Insert";
             this.btn_insert.UseVisualStyleBackColor = true;
+            this.btn_insert.Click += new System.EventHandler(this.btn_insert_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 35);
+            this.label1.Location = new System.Drawing.Point(23, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 13);
             this.label1.TabIndex = 1;
@@ -68,7 +69,7 @@
             // 
             // tb_Date
             // 
-            this.tb_Date.Location = new System.Drawing.Point(172, 32);
+            this.tb_Date.Location = new System.Drawing.Point(172, 61);
             this.tb_Date.Name = "tb_Date";
             this.tb_Date.Size = new System.Drawing.Size(100, 20);
             this.tb_Date.TabIndex = 2;
@@ -84,10 +85,11 @@
             this.Delete,
             this.Mark_Attendance});
             this.dataGridView1.DataSource = this.classAttendanceBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 135);
+            this.dataGridView1.Location = new System.Drawing.Point(26, 133);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(597, 192);
+            this.dataGridView1.Size = new System.Drawing.Size(545, 192);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // linkLabel1
             // 
@@ -102,12 +104,13 @@
             // 
             // btn_Fetch
             // 
-            this.btn_Fetch.Location = new System.Drawing.Point(548, 333);
+            this.btn_Fetch.Location = new System.Drawing.Point(496, 333);
             this.btn_Fetch.Name = "btn_Fetch";
             this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
             this.btn_Fetch.TabIndex = 5;
             this.btn_Fetch.Text = "Fetch";
             this.btn_Fetch.UseVisualStyleBackColor = true;
+            this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
             // 
             // projectBDataSet6
             // 

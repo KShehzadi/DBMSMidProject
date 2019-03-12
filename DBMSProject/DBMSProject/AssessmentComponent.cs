@@ -155,26 +155,48 @@ namespace DBMSProject
                 cb_Assessment.SelectedValue = Convert.ToInt32(dataGridView1[6, e.RowIndex].Value);
                 btn_add.Text = "Update";
             }
+            
             else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                e.RowIndex >= 0 && senderGrid.Columns[e.ColumnIndex].HeaderText == "Delete")
             {
-
-                int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "DELETE FROM [ProjectB].[dbo].[AssessmentComponent] Where id=@id";
-                using (SqlCommand command = new SqlCommand(query, conn))
+                try
                 {
-                    command.Parameters.AddWithValue("@id", i);
+                    int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
+                    String query = "DELETE FROM [ProjectB].[dbo].[AssessmentComponent] Where id=@id";
+                    using (SqlCommand command = new SqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", i);
 
 
 
-                    int result = command.ExecuteNonQuery();
+                        int result = command.ExecuteNonQuery();
 
-                    // Check Error
-                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
+                        // Check Error
+                        if (result < 0) Console.WriteLine("Error Deleting data From Database!");
 
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("You can't Delete this. It may have dependencies in Database!");
                 }
             }
 
+            String cmd = "SELECT * FROM [ProjectB].[dbo].[AssessmentComponent]";
+            SqlCommand commandf = new SqlCommand(cmd, conn);
+            // Add the parameters if required
+            commandf.Parameters.Add(new SqlParameter("0", 1));
+            SqlDataReader reader = commandf.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void btn_Fetch_Click(object sender, EventArgs e)
+        {
+            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
+            SqlConnection conn = new SqlConnection(conURL);
+            conn.Open();
             String cmd = "SELECT * FROM [ProjectB].[dbo].[AssessmentComponent]";
             SqlCommand commandf = new SqlCommand(cmd, conn);
             // Add the parameters if required

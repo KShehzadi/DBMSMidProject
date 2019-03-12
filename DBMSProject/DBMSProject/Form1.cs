@@ -52,5 +52,12 @@ namespace DBMSProject
             this.Hide();
 
         }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Classes c = new Classes();
+            c.Show();
+            this.Hide();
+        }
     }
 }

@@ -39,11 +39,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_Fetch = new System.Windows.Forms.Button();
-            this.lbl_index = new System.Windows.Forms.LinkLabel();
-            this.projectBDataSet5 = new DBMSProject.ProjectBDataSet5();
-            this.assessmentComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.assessmentComponentTableAdapter = new DBMSProject.ProjectBDataSet5TableAdapters.AssessmentComponentTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rubricIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,9 +48,14 @@
             this.assessmentIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.assessmentComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projectBDataSet5 = new DBMSProject.ProjectBDataSet5();
+            this.btn_Fetch = new System.Windows.Forms.Button();
+            this.lbl_index = new System.Windows.Forms.LinkLabel();
+            this.assessmentComponentTableAdapter = new DBMSProject.ProjectBDataSet5TableAdapters.AssessmentComponentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assessmentComponentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet5)).BeginInit();
             this.SuspendLayout();
             // 
             // cb_Rubric
@@ -155,40 +155,6 @@
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // btn_Fetch
-            // 
-            this.btn_Fetch.Location = new System.Drawing.Point(873, 284);
-            this.btn_Fetch.Name = "btn_Fetch";
-            this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
-            this.btn_Fetch.TabIndex = 10;
-            this.btn_Fetch.Text = "Fetch";
-            this.btn_Fetch.UseVisualStyleBackColor = true;
-            // 
-            // lbl_index
-            // 
-            this.lbl_index.AutoSize = true;
-            this.lbl_index.Location = new System.Drawing.Point(896, 333);
-            this.lbl_index.Name = "lbl_index";
-            this.lbl_index.Size = new System.Drawing.Size(61, 13);
-            this.lbl_index.TabIndex = 11;
-            this.lbl_index.TabStop = true;
-            this.lbl_index.Text = "Index Page";
-            this.lbl_index.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_index_LinkClicked);
-            // 
-            // projectBDataSet5
-            // 
-            this.projectBDataSet5.DataSetName = "ProjectBDataSet5";
-            this.projectBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // assessmentComponentBindingSource
-            // 
-            this.assessmentComponentBindingSource.DataMember = "AssessmentComponent";
-            this.assessmentComponentBindingSource.DataSource = this.projectBDataSet5;
-            // 
-            // assessmentComponentTableAdapter
-            // 
-            this.assessmentComponentTableAdapter.ClearBeforeFill = true;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -250,6 +216,41 @@
             this.Delete.ToolTipText = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // assessmentComponentBindingSource
+            // 
+            this.assessmentComponentBindingSource.DataMember = "AssessmentComponent";
+            this.assessmentComponentBindingSource.DataSource = this.projectBDataSet5;
+            // 
+            // projectBDataSet5
+            // 
+            this.projectBDataSet5.DataSetName = "ProjectBDataSet5";
+            this.projectBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btn_Fetch
+            // 
+            this.btn_Fetch.Location = new System.Drawing.Point(873, 284);
+            this.btn_Fetch.Name = "btn_Fetch";
+            this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
+            this.btn_Fetch.TabIndex = 10;
+            this.btn_Fetch.Text = "Fetch";
+            this.btn_Fetch.UseVisualStyleBackColor = true;
+            this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
+            // 
+            // lbl_index
+            // 
+            this.lbl_index.AutoSize = true;
+            this.lbl_index.Location = new System.Drawing.Point(896, 333);
+            this.lbl_index.Name = "lbl_index";
+            this.lbl_index.Size = new System.Drawing.Size(61, 13);
+            this.lbl_index.TabIndex = 11;
+            this.lbl_index.TabStop = true;
+            this.lbl_index.Text = "Index Page";
+            this.lbl_index.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_index_LinkClicked);
+            // 
+            // assessmentComponentTableAdapter
+            // 
+            this.assessmentComponentTableAdapter.ClearBeforeFill = true;
+            // 
             // AssessmentComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,8 +272,8 @@
             this.Text = "AssessmentComponent";
             this.Load += new System.EventHandler(this.AssessmentComponent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.assessmentComponentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
