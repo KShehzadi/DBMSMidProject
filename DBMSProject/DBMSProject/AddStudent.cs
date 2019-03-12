@@ -23,56 +23,104 @@ namespace DBMSProject
 
         private void btn_insert_Click(object sender, EventArgs e)
         {
+
             String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
             SqlConnection conn = new SqlConnection(conURL);
+            SqlDataReader reader;
             conn.Open();
+            // First Name and Last Name can be same for two Students but all other fields are unique
+            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[Student] Where Contact = @contact OR Email = @email OR RegistrationNumber = @regno  ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
+                command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
+                command.Parameters.AddWithValue("@contact", tb_Contact.Text);
+                command.Parameters.AddWithValue("@email", tb_Email.Text);
+                command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
+
+                
+                reader = command.ExecuteReader();
+            }
+            if (reader.HasRows)
+            {
+                MessageBox.Show("Class with same Date already exist !");
+                return;
+            }
+
+
             if (btn_insert.Text == "Insert Student")
             {
-                
-                String query = "INSERT INTO dbo.Student (FirstName,LastName,Contact,Email,RegistrationNumber,Status) VALUES (@firstname,@lastname,@contact, @email, @regno, @status)";
-
-                using (SqlCommand command = new SqlCommand(query, conn))
+                if(tb_FirstName.Text == "" || tb_LastName.Text == "" || tb_Email.Text == "" || tb_Contact.Text=="" || tb_RegNo.Text=="" || cb_status.Text=="")
                 {
-                    command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
-                    command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
-                    command.Parameters.AddWithValue("@contact", tb_Contact.Text);
-                    command.Parameters.AddWithValue("@email", tb_Email.Text);
-                    command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
-                    command.Parameters.AddWithValue("@status", Convert.ToInt32(tb_Status.Text));
+                    MessageBox.Show("You can't insert a record with empty fields");
+                    return;
+                }
+                try {
+                    String query = "INSERT INTO dbo.Student (FirstName,LastName,Contact,Email,RegistrationNumber,Status) VALUES (@firstname,@lastname,@contact, @email, @regno, @status)";
 
-                    int result = command.ExecuteNonQuery();
+                    using (SqlCommand command = new SqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
+                        command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
+                        command.Parameters.AddWithValue("@contact", tb_Contact.Text);
+                        command.Parameters.AddWithValue("@email", tb_Email.Text);
+                        command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
 
-                    // Check Error
-                    if (result < 0)
-                        Console.WriteLine("Error inserting data into Database!");
+                        DataRowView drv = cb_status.SelectedItem as DataRowView;
+                        int i = Convert.ToInt32(drv.Row["Lookupid"]);
+                        command.Parameters.AddWithValue("@status", i);
+
+                        int result = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            Console.WriteLine("Error inserting data into Database!");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Trying to Insert Invalid data in database!");
+                    return;
                 }
             }
-            else if(btn_insert.Text== "Update")
+            else if (btn_insert.Text == "Update")
             {
-                String query = "UPDATE dbo.Student SET FirstName = @firstname,LastName = @lastname,Contact = @contact,Email = @email,RegistrationNumber = @regno,Status = @status Where id = @id";
+                try {
+                    String query = "UPDATE dbo.Student SET FirstName = @firstname,LastName = @lastname,Contact = @contact,Email = @email,RegistrationNumber = @regno,Status = @status Where id = @id";
 
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
-                    command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
-                    command.Parameters.AddWithValue("@contact", tb_Contact.Text);
-                    command.Parameters.AddWithValue("@email", tb_Email.Text);
-                    command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
-                    command.Parameters.AddWithValue("@status", Convert.ToInt32(tb_Status.Text));
-                    command.Parameters.AddWithValue("@id", index);
+                    using (SqlCommand command = new SqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
+                        command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
+                        command.Parameters.AddWithValue("@contact", tb_Contact.Text);
+                        command.Parameters.AddWithValue("@email", tb_Email.Text);
+                        command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
 
-                    int result = command.ExecuteNonQuery();
+                        DataRowView drv = cb_status.SelectedItem as DataRowView;
+                        int i = Convert.ToInt32(drv.Row["Lookupid"]);
+                        command.Parameters.AddWithValue("@status", i);
+                        command.Parameters.AddWithValue("@id", index);
 
-                    // Check Error
-                    if (result < 0)
-                        Console.WriteLine("Error Updating data into Database!");
+                        int result = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            Console.WriteLine("Error Updating data into Database!");
+                    }
                 }
-            }
+                catch
+                {
+                    MessageBox.Show("This Record can not be updated due to invalid data or dependencies  in database!");
+                    return;
+                
+                }
+                }
             String cmd = "SELECT * FROM [ProjectB].[dbo].[Student]";
             SqlCommand commandf = new SqlCommand(cmd, conn);
             // Add the parameters if required
             commandf.Parameters.Add(new SqlParameter("0", 1));
-            SqlDataReader reader = commandf.ExecuteReader();
+            reader = commandf.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
@@ -81,14 +129,13 @@ namespace DBMSProject
             tb_RegNo.Clear();
             tb_Email.Clear();
             tb_Contact.Clear();
-            tb_Status.Clear();
+            
             btn_insert.Text = "Insert Student";
         }
 
         private void AddStudent_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'projectBDataSet1.Student' table. You can move, or remove it, as needed.
-            this.studentTableAdapter.Fill(this.projectBDataSet1.Student);
+         
             String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
             SqlConnection conn = new SqlConnection(conURL);
             conn.Open();
@@ -100,6 +147,14 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+
+            string query = "select Lookupid, Name from Lookup Where Category = 'STUDENT_STATUS'";
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "lookup");
+            cb_status.DisplayMember = "Name";
+            cb_status.ValueMember = "Lookupid";
+            cb_status.DataSource = ds.Tables["lookup"];
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -118,7 +173,7 @@ namespace DBMSProject
                 tb_Contact.Text = Convert.ToString(dataGridView1[3, e.RowIndex].Value);
                 tb_Email.Text = Convert.ToString(dataGridView1[4, e.RowIndex].Value);
                 tb_RegNo.Text = Convert.ToString(dataGridView1[5, e.RowIndex].Value);
-                tb_Status.Text = Convert.ToString(dataGridView1[6, e.RowIndex].Value);
+                cb_status.SelectedValue = Convert.ToInt32(dataGridView1[6, e.RowIndex].Value);
                 btn_insert.Text = "Update";
             }
             else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&

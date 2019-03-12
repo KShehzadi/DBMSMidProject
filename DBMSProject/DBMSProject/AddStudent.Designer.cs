@@ -42,12 +42,7 @@
             this.btn_insert = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
-            this.tb_Status = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.projectBDataSet1 = new DBMSProject.ProjectBDataSet1();
-            this.btn_Fetch = new System.Windows.Forms.Button();
-            this.studentTableAdapter = new DBMSProject.ProjectBDataSet1TableAdapters.StudentTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +52,11 @@
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projectBDataSet1 = new DBMSProject.ProjectBDataSet1();
+            this.btn_Fetch = new System.Windows.Forms.Button();
+            this.studentTableAdapter = new DBMSProject.ProjectBDataSet1TableAdapters.StudentTableAdapter();
+            this.cb_status = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet1)).BeginInit();
@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 54);
+            this.label1.Location = new System.Drawing.Point(12, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
@@ -74,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 102);
+            this.label2.Location = new System.Drawing.Point(12, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 1;
@@ -83,7 +83,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 149);
+            this.label3.Location = new System.Drawing.Point(12, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 2;
@@ -92,7 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 194);
+            this.label4.Location = new System.Drawing.Point(12, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 3;
@@ -101,7 +101,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 236);
+            this.label5.Location = new System.Drawing.Point(12, 161);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 13);
             this.label5.TabIndex = 4;
@@ -116,35 +116,35 @@
             // 
             // tb_LastName
             // 
-            this.tb_LastName.Location = new System.Drawing.Point(129, 99);
+            this.tb_LastName.Location = new System.Drawing.Point(129, 73);
             this.tb_LastName.Name = "tb_LastName";
             this.tb_LastName.Size = new System.Drawing.Size(100, 20);
             this.tb_LastName.TabIndex = 6;
             // 
             // tb_Contact
             // 
-            this.tb_Contact.Location = new System.Drawing.Point(129, 142);
+            this.tb_Contact.Location = new System.Drawing.Point(129, 102);
             this.tb_Contact.Name = "tb_Contact";
             this.tb_Contact.Size = new System.Drawing.Size(100, 20);
             this.tb_Contact.TabIndex = 7;
             // 
             // tb_Email
             // 
-            this.tb_Email.Location = new System.Drawing.Point(129, 187);
+            this.tb_Email.Location = new System.Drawing.Point(129, 128);
             this.tb_Email.Name = "tb_Email";
             this.tb_Email.Size = new System.Drawing.Size(100, 20);
             this.tb_Email.TabIndex = 8;
             // 
             // tb_RegNo
             // 
-            this.tb_RegNo.Location = new System.Drawing.Point(129, 229);
+            this.tb_RegNo.Location = new System.Drawing.Point(129, 154);
             this.tb_RegNo.Name = "tb_RegNo";
             this.tb_RegNo.Size = new System.Drawing.Size(100, 20);
             this.tb_RegNo.TabIndex = 9;
             // 
             // btn_insert
             // 
-            this.btn_insert.Location = new System.Drawing.Point(129, 307);
+            this.btn_insert.Location = new System.Drawing.Point(120, 219);
             this.btn_insert.Name = "btn_insert";
             this.btn_insert.Size = new System.Drawing.Size(109, 23);
             this.btn_insert.TabIndex = 10;
@@ -165,18 +165,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 269);
+            this.label6.Location = new System.Drawing.Point(12, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Status";
-            // 
-            // tb_Status
-            // 
-            this.tb_Status.Location = new System.Drawing.Point(129, 266);
-            this.tb_Status.Name = "tb_Status";
-            this.tb_Status.Size = new System.Drawing.Size(100, 20);
-            this.tb_Status.TabIndex = 13;
             // 
             // dataGridView1
             // 
@@ -198,30 +191,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(843, 263);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // studentBindingSource
-            // 
-            this.studentBindingSource.DataMember = "Student";
-            this.studentBindingSource.DataSource = this.projectBDataSet1;
-            // 
-            // projectBDataSet1
-            // 
-            this.projectBDataSet1.DataSetName = "ProjectBDataSet1";
-            this.projectBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btn_Fetch
-            // 
-            this.btn_Fetch.Location = new System.Drawing.Point(922, 353);
-            this.btn_Fetch.Name = "btn_Fetch";
-            this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
-            this.btn_Fetch.TabIndex = 15;
-            this.btn_Fetch.Text = "Fetch Data";
-            this.btn_Fetch.UseVisualStyleBackColor = true;
-            this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
-            // 
-            // studentTableAdapter
-            // 
-            this.studentTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -284,14 +253,46 @@
             this.Delete.ToolTipText = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // studentBindingSource
+            // 
+            this.studentBindingSource.DataMember = "Student";
+            this.studentBindingSource.DataSource = this.projectBDataSet1;
+            // 
+            // projectBDataSet1
+            // 
+            this.projectBDataSet1.DataSetName = "ProjectBDataSet1";
+            this.projectBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btn_Fetch
+            // 
+            this.btn_Fetch.Location = new System.Drawing.Point(922, 353);
+            this.btn_Fetch.Name = "btn_Fetch";
+            this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
+            this.btn_Fetch.TabIndex = 15;
+            this.btn_Fetch.Text = "Fetch Data";
+            this.btn_Fetch.UseVisualStyleBackColor = true;
+            this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
+            // 
+            // studentTableAdapter
+            // 
+            this.studentTableAdapter.ClearBeforeFill = true;
+            // 
+            // cb_status
+            // 
+            this.cb_status.FormattingEnabled = true;
+            this.cb_status.Location = new System.Drawing.Point(129, 187);
+            this.cb_status.Name = "cb_status";
+            this.cb_status.Size = new System.Drawing.Size(100, 21);
+            this.cb_status.TabIndex = 16;
+            // 
             // AddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 405);
+            this.Controls.Add(this.cb_status);
             this.Controls.Add(this.btn_Fetch);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.tb_Status);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btn_insert);
@@ -331,7 +332,6 @@
         private System.Windows.Forms.Button btn_insert;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tb_Status;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_Fetch;
         private ProjectBDataSet1 projectBDataSet1;
@@ -346,5 +346,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Action;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.ComboBox cb_status;
     }
 }
