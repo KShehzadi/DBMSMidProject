@@ -38,13 +38,109 @@ namespace DBMSProject
             {
                
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "DELETE FROM [ProjectB].[dbo].[CLO] Where id=@id";
+                String query = "Select Id FROM [ProjectB].[dbo].[Rubric] Where CloId=@id";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", i);
+
+                    SqlDataReader readerrubric = command.ExecuteReader();
+                    int recordcount = 0;
+                    while (readerrubric.Read())
+                    {
+                        recordcount++;
+                    }
+                    int[] rubricarray = new int[recordcount];
+                    readerrubric.Close();
+                    readerrubric = command.ExecuteReader();
+                    int count = 0;
+                    
+                    while(readerrubric.Read())
+                    {
+                        int rubricid1 = readerrubric.GetInt32(0);
+                        rubricarray[count] = rubricid1;
+                        count++;
+                    }
+                    readerrubric.Close();
+                    foreach (int rubricid in rubricarray)
+                    {
+
+
+                        query = "Delete FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId=@id";
+                        using (SqlCommand commandl = new SqlCommand(query, conn))
+                        {
+                            commandl.Parameters.AddWithValue("@id", rubricid);
+                            int result = commandl.ExecuteNonQuery();
+                        }
+                    }
+                    foreach (int rubricid in rubricarray)
+                    {
+                        
+                        query = "Select Id FROM [ProjectB].[dbo].[RubricLevel] Where RubricId=@id";
+                        using (SqlCommand commandr = new SqlCommand(query, conn))
+                        {
+                            commandr.Parameters.AddWithValue("@id", rubricid);
+
+
+                            SqlDataReader readerrubriclevel= command.ExecuteReader();
+                            count = 0;
+                            recordcount = 0;
+                            while (readerrubriclevel.Read())
+                            {
+                                recordcount++;
+                            }
+                            int[] rubriclevelarray = new int[recordcount];
+                            readerrubriclevel.Close();
+                            readerrubriclevel = command.ExecuteReader();
+                            while (readerrubriclevel.Read())
+                            {
+                                int rubricid1 = readerrubriclevel.GetInt32(0);
+                                rubriclevelarray[count] = rubricid1;
+                                count++;
+                            }
+                            readerrubriclevel.Close();
+                            foreach (int rubriclevelid in rubriclevelarray)
+                            {
+                                
+                                query = "Delete FROM [ProjectB].[dbo].[StudentResult] Where RubricMeasurementId=@id";
+                                using (SqlCommand commandl = new SqlCommand(query, conn))
+                                {
+                                    commandl.Parameters.AddWithValue("@id", rubriclevelid);
+                                    int result = commandl.ExecuteNonQuery();
+                                }
+                            }
+                            foreach (int rubriclevelid in rubricarray)
+                            {
+                                
+                                query = "Delete FROM [ProjectB].[dbo].[RubricLevel] Where RubricId=@id";
+                                using (SqlCommand commandl = new SqlCommand(query, conn))
+                                {
+                                    commandl.Parameters.AddWithValue("@id", rubriclevelid);
+                                    int result = commandl.ExecuteNonQuery();
+                                }
+                            }
+
+                        }
+
+
+                    }
+
+                      
+
+                }
+
+                
+                query = "Delete  FROM [ProjectB].[dbo].[Rubric] Where CloId=@id";
+                using (SqlCommand commandl = new SqlCommand(query, conn))
+                {
+                    commandl.Parameters.AddWithValue("@id", i);
+                    int result = commandl.ExecuteNonQuery();
+                }
+
+                query = "DELETE FROM [ProjectB].[dbo].[CLO] Where id=@id";
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@id", i);
                     
-
-
                     int result = command.ExecuteNonQuery();
 
                     // Check Error

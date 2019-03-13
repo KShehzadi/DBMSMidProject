@@ -48,6 +48,7 @@
             this.measurementLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rubricLevelBindingSource)).BeginInit();
@@ -138,6 +139,7 @@
             this.btn_Fetch.TabIndex = 8;
             this.btn_Fetch.Text = "Fetch";
             this.btn_Fetch.UseVisualStyleBackColor = true;
+            this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
             // 
             // linkLabel1
             // 
@@ -205,11 +207,22 @@
             this.Delete.ToolTipText = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(254, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(342, 26);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Rubric Level Management Page";
+            // 
             // Rubric_Level_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 342);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btn_Fetch);
             this.Controls.Add(this.dataGridView1);
@@ -252,5 +265,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn measurementLevelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Action;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Label label4;
     }
 }

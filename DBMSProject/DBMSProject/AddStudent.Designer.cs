@@ -290,7 +290,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 405);
+            this.ClientSize = new System.Drawing.Size(1155, 714);
             this.Controls.Add(this.cb_status);
             this.Controls.Add(this.btn_Fetch);
             this.Controls.Add(this.dataGridView1);

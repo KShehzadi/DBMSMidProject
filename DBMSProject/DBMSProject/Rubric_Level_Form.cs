@@ -20,8 +20,7 @@ namespace DBMSProject
 
         private void Rubric_Level_Form_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'projectBDataSet7.RubricLevel' table. You can move, or remove it, as needed.
-            this.rubricLevelTableAdapter.Fill(this.projectBDataSet7.RubricLevel);
+            
             String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
             SqlConnection conn = new SqlConnection(conURL);
             conn.Open();
@@ -206,6 +205,29 @@ namespace DBMSProject
             Form1 f = new Form1();
             f.Show();
             this.Hide();
+        }
+
+        private void btn_Fetch_Click(object sender, EventArgs e)
+        {
+            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
+            SqlConnection conn = new SqlConnection(conURL);
+            conn.Open();
+            string query = "select id,Details from [ProjectB].[dbo].[Rubric]";
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "rubric");
+            cb_rubric.DisplayMember = "Details";
+            cb_rubric.ValueMember = "id";
+            cb_rubric.DataSource = ds.Tables["rubric"];
+
+            String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel]";
+            SqlCommand command = new SqlCommand(cmd, conn);
+            // Add the parameters if required
+            command.Parameters.Add(new SqlParameter("0", 1));
+            SqlDataReader reader = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
         }
     }
 }
