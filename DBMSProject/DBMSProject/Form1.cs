@@ -59,5 +59,12 @@ namespace DBMSProject
             c.Show();
             this.Hide();
         }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Rubric_Level_Form r = new Rubric_Level_Form();
+            r.Show();
+            this.Hide();
+        }
     }
 }

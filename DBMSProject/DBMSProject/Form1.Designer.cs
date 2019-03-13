@@ -34,12 +34,13 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lbl_Student
             // 
             this.lbl_Student.AutoSize = true;
-            this.lbl_Student.Location = new System.Drawing.Point(47, 86);
+            this.lbl_Student.Location = new System.Drawing.Point(26, 13);
             this.lbl_Student.Name = "lbl_Student";
             this.lbl_Student.Size = new System.Drawing.Size(137, 13);
             this.lbl_Student.TabIndex = 0;
@@ -50,7 +51,7 @@
             // lbl_clopage
             // 
             this.lbl_clopage.AutoSize = true;
-            this.lbl_clopage.Location = new System.Drawing.Point(47, 125);
+            this.lbl_clopage.Location = new System.Drawing.Point(26, 52);
             this.lbl_clopage.Name = "lbl_clopage";
             this.lbl_clopage.Size = new System.Drawing.Size(121, 13);
             this.lbl_clopage.TabIndex = 1;
@@ -61,7 +62,7 @@
             // lbl_rubric
             // 
             this.lbl_rubric.AutoSize = true;
-            this.lbl_rubric.Location = new System.Drawing.Point(47, 170);
+            this.lbl_rubric.Location = new System.Drawing.Point(26, 97);
             this.lbl_rubric.Name = "lbl_rubric";
             this.lbl_rubric.Size = new System.Drawing.Size(131, 13);
             this.lbl_rubric.TabIndex = 2;
@@ -72,7 +73,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(47, 211);
+            this.linkLabel1.Location = new System.Drawing.Point(26, 138);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(156, 13);
             this.linkLabel1.TabIndex = 3;
@@ -83,7 +84,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(47, 245);
+            this.linkLabel2.Location = new System.Drawing.Point(26, 172);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(148, 13);
             this.linkLabel2.TabIndex = 4;
@@ -94,7 +95,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(47, 274);
+            this.linkLabel3.Location = new System.Drawing.Point(26, 201);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(125, 13);
             this.linkLabel3.TabIndex = 5;
@@ -102,11 +103,23 @@
             this.linkLabel3.Text = "Class Management Page";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(26, 233);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(160, 13);
+            this.linkLabel4.TabIndex = 6;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "Rubric Level Management Page";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 296);
+            this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
@@ -128,6 +141,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel linkLabel4;
     }
 }
 

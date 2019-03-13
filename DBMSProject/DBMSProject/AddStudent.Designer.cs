@@ -144,7 +144,7 @@
             // 
             // btn_insert
             // 
-            this.btn_insert.Location = new System.Drawing.Point(120, 219);
+            this.btn_insert.Location = new System.Drawing.Point(120, 218);
             this.btn_insert.Name = "btn_insert";
             this.btn_insert.Size = new System.Drawing.Size(109, 23);
             this.btn_insert.TabIndex = 10;
@@ -155,12 +155,13 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(235, 344);
+            this.linkLabel1.Location = new System.Drawing.Point(1032, 356);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(61, 13);
             this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.Text = "Index Page";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label6
             // 
@@ -265,7 +266,7 @@
             // 
             // btn_Fetch
             // 
-            this.btn_Fetch.Location = new System.Drawing.Point(922, 353);
+            this.btn_Fetch.Location = new System.Drawing.Point(1012, 316);
             this.btn_Fetch.Name = "btn_Fetch";
             this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
             this.btn_Fetch.TabIndex = 15;

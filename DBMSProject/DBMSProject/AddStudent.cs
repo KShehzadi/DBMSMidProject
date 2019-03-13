@@ -56,6 +56,7 @@ namespace DBMSProject
                     MessageBox.Show("You can't insert a record with empty fields");
                     return;
                 }
+
                 try {
                     String query = "INSERT INTO dbo.Student (FirstName,LastName,Contact,Email,RegistrationNumber,Status) VALUES (@firstname,@lastname,@contact, @email, @regno, @status)";
 
@@ -225,6 +226,13 @@ namespace DBMSProject
 
             conn.Close();
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
+            this.Hide();
         }
     }
 }

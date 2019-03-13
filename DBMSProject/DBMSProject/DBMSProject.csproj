@@ -118,12 +118,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjectBDataSet6.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ProjectBDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectBDataSet7.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rubric.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Rubric.Designer.cs">
       <DependentUpon>Rubric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rubric_Level_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rubric_Level_Form.Designer.cs">
+      <DependentUpon>Rubric_Level_Form.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
@@ -154,6 +165,9 @@
     </Compile>
     <EmbeddedResource Include="Rubric.resx">
       <DependentUpon>Rubric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rubric_Level_Form.resx">
+      <DependentUpon>Rubric_Level_Form.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ProjectBDataSet.xsc">
       <DependentUpon>ProjectBDataSet.xsd</DependentUpon>
@@ -231,6 +245,17 @@
     </None>
     <None Include="ProjectBDataSet6.xss">
       <DependentUpon>ProjectBDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectBDataSet7.xsc">
+      <DependentUpon>ProjectBDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectBDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProjectBDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProjectBDataSet7.xss">
+      <DependentUpon>ProjectBDataSet7.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
