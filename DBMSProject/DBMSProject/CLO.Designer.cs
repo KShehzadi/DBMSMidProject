@@ -44,6 +44,7 @@
             this.tb_cloname = new System.Windows.Forms.TextBox();
             this.cloTableAdapter = new DBMSProject.ProjectBDataSetTableAdapters.CloTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cloBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet)).BeginInit();
@@ -61,7 +62,7 @@
             this.Action,
             this.Delete});
             this.dataGridView1.DataSource = this.cloBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 99);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 121);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(656, 171);
             this.dataGridView1.TabIndex = 0;
@@ -121,7 +122,7 @@
             // 
             // btn_clo
             // 
-            this.btn_clo.Location = new System.Drawing.Point(119, 70);
+            this.btn_clo.Location = new System.Drawing.Point(118, 92);
             this.btn_clo.Name = "btn_clo";
             this.btn_clo.Size = new System.Drawing.Size(75, 23);
             this.btn_clo.TabIndex = 1;
@@ -131,7 +132,7 @@
             // 
             // btn_fetch
             // 
-            this.btn_fetch.Location = new System.Drawing.Point(541, 276);
+            this.btn_fetch.Location = new System.Drawing.Point(516, 299);
             this.btn_fetch.Name = "btn_fetch";
             this.btn_fetch.Size = new System.Drawing.Size(75, 23);
             this.btn_fetch.TabIndex = 2;
@@ -152,7 +153,7 @@
             // 
             // tb_cloname
             // 
-            this.tb_cloname.Location = new System.Drawing.Point(94, 44);
+            this.tb_cloname.Location = new System.Drawing.Point(93, 66);
             this.tb_cloname.Name = "tb_cloname";
             this.tb_cloname.Size = new System.Drawing.Size(100, 20);
             this.tb_cloname.TabIndex = 4;
@@ -164,17 +165,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 47);
+            this.label1.Location = new System.Drawing.Point(28, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "CLO Name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(181, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(260, 26);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "CLO Management Page";
             // 
             // CLO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 334);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.tb_cloname);
@@ -209,5 +221,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Action;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

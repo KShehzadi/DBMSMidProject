@@ -42,9 +42,9 @@ namespace DBMSProject
                 
                 reader = command.ExecuteReader();
             }
-            if (reader.HasRows)
+            if (reader.HasRows && btn_insert.Text != "Update")
             {
-                MessageBox.Show("Class with same Date already exist !");
+                MessageBox.Show("Student with same Date already exist !");
                 return;
             }
 

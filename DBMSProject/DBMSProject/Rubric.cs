@@ -103,13 +103,25 @@ namespace DBMSProject
             conn.Open();
             try
             {
-                
+                int number;
                 int j = 0;
                 int[] idarray = new int[50];
                 if (btn_rubric.Text == "Add Rubric")
                 {
                     foreach (Control ctr in panel2.Controls)
                     {
+                        
+                        bool result = Int32.TryParse(((TextBox)ctr).Text, out number);
+                        if (!result)
+                        {
+                            MessageBox.Show("Warnning: Empty Rubric id not allowed!");
+                            return;
+                        }
+                        if (((TextBox)ctr).Text=="")
+                        {
+                            return;
+
+                        }
                         idarray[j] = Convert.ToInt32(((TextBox)ctr).Text);
                         j++;
                     }
@@ -119,6 +131,11 @@ namespace DBMSProject
                         if (ctr is TextBox)
                         {
                             string value = ((TextBox)ctr).Text;
+                            if(value=="")
+                            {
+                                MessageBox.Show("Warning: Empty fields in form!");
+                                return;
+                            }
                             String query = "INSERT INTO dbo.Rubric (id,Details,CloId) VALUES (@i,@name,@id)";
                             DataRowView drv = cb_clo.SelectedItem as DataRowView;
                             int i = Convert.ToInt32(drv.Row["id"]);
@@ -156,15 +173,72 @@ namespace DBMSProject
                         if (ctr is TextBox)
                         {
                             string value = ((TextBox)ctr).Text;
-                            String query = "Update dbo.Rubric SET id =@newid , Details = @name,CloId=@id where id = @index";
+                            String query = "INSERT INTO dbo.Rubric (id,Details,CloId) VALUES (@i,@name,@id)";
                             DataRowView drv = cb_clo.SelectedItem as DataRowView;
                             int i = Convert.ToInt32(drv.Row["id"]);
+                            using (SqlCommand command = new SqlCommand(query, conn))
+                            {
+
+                                command.Parameters.AddWithValue("@name", value);
+                                command.Parameters.AddWithValue("@id", i);
+                                command.Parameters.AddWithValue("@i", p);
+
+                                int result = command.ExecuteNonQuery();
+
+                                // Check Error
+                                if (result < 0) Console.WriteLine("Error inserting data into Database!");
+                                
+
+                            }
+
+                            
+                            query = "Update dbo.AssessmentComponent SET RubricId=@newid where RubricId = @index";
+                            
+                            using (SqlCommand command = new SqlCommand(query, conn))
+                            {
+                                command.Parameters.AddWithValue("@newid", p);
+                                command.Parameters.AddWithValue("@index", index);
+
+                                int result = command.ExecuteNonQuery();
+
+                                // Check Error
+                                if (result < 0) Console.WriteLine("Error Updating data into Database!");
+
+                            }
+
+                            query = "Update dbo.RubricLevel SET RubricId=@newid where RubricId = @index";
+                            
+                            using (SqlCommand command = new SqlCommand(query, conn))
+                            {
+                                command.Parameters.AddWithValue("@newid", p);
+                                command.Parameters.AddWithValue("@index", index);
+
+                                int result = command.ExecuteNonQuery();
+
+                                // Check Error
+                                if (result < 0) Console.WriteLine("Error Updating data into Database!");
+
+                            }
+                            query = "Update dbo.Rubric SET Details = @name,CloId=@id where id = @index";
+                            
                             using (SqlCommand command = new SqlCommand(query, conn))
                             {
                                 command.Parameters.AddWithValue("@name", value);
                                 command.Parameters.AddWithValue("@id", i);
                                 command.Parameters.AddWithValue("@index", index);
-                                command.Parameters.AddWithValue("@newid", p);
+                                
+                                int result = command.ExecuteNonQuery();
+
+                                // Check Error
+                                if (result < 0) Console.WriteLine("Error Updating data into Database!");
+
+                            }
+                            query = "Delete from dbo.Rubric where id = @index";
+                            using (SqlCommand command = new SqlCommand(query, conn))
+                            {
+                               
+                                command.Parameters.AddWithValue("@index", index);
+                                
                                 int result = command.ExecuteNonQuery();
 
                                 // Check Error
@@ -174,14 +248,16 @@ namespace DBMSProject
 
                         }
                     }
-
+                    
                 }
             }
             catch
             {
                 MessageBox.Show("Trying to Send Invalid data in Database!");
             }
+            textBox1.Show();
             textBox1.Clear();
+            
             String cmd = "SELECT * FROM [ProjectB].[dbo].[Rubric]";
             SqlCommand commandf = new SqlCommand(cmd, conn);
             // Add the parameters if required
@@ -212,6 +288,8 @@ namespace DBMSProject
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0 && senderGrid.Columns[e.ColumnIndex].HeaderText == "Update")
             {
+                textBox1.Clear();
+                textBox1.Hide();
                 index = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
 
 
@@ -248,7 +326,19 @@ namespace DBMSProject
             {
 
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "DELETE FROM [ProjectB].[dbo].[Rubric] Where id=@id";
+                String query = "Delete FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId=@id";
+                using (SqlCommand commandl = new SqlCommand(query, conn))
+                {
+                    commandl.Parameters.AddWithValue("@id", i);
+                    int result = commandl.ExecuteNonQuery();
+                }
+                query = "Delete FROM [ProjectB].[dbo].[RubricLevel] Where RubricId=@id";
+                using (SqlCommand commandl = new SqlCommand(query, conn))
+                {
+                    commandl.Parameters.AddWithValue("@id", i);
+                    int result = commandl.ExecuteNonQuery();
+                }
+                query = "DELETE FROM [ProjectB].[dbo].[Rubric] Where id=@id";
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@id", i);

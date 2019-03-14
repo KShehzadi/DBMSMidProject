@@ -116,7 +116,21 @@ namespace DBMSProject
             {
 
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "DELETE FROM [ProjectB].[dbo].[Assessment] Where id=@id";
+                String query = "DELETE FROM [ProjectB].[dbo].[AssessmentComponent] Where AssessmentId=@id";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", i);
+
+
+
+                    int result = command.ExecuteNonQuery();
+
+                    // Check Error
+                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
+
+
+                }
+                query = "DELETE FROM [ProjectB].[dbo].[Assessment] Where id=@id";
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@id", i);
