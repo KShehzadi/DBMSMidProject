@@ -120,8 +120,9 @@
             this.tb_FirstName.Location = new System.Drawing.Point(133, 0);
             this.tb_FirstName.Margin = new System.Windows.Forms.Padding(0);
             this.tb_FirstName.Name = "tb_FirstName";
-            this.tb_FirstName.Size = new System.Drawing.Size(591, 20);
+            this.tb_FirstName.Size = new System.Drawing.Size(590, 20);
             this.tb_FirstName.TabIndex = 5;
+            this.tb_FirstName.TextChanged += new System.EventHandler(this.tb_FirstName_TextChanged);
             // 
             // tb_LastName
             // 
@@ -129,8 +130,9 @@
             this.tb_LastName.Location = new System.Drawing.Point(133, 20);
             this.tb_LastName.Margin = new System.Windows.Forms.Padding(0);
             this.tb_LastName.Name = "tb_LastName";
-            this.tb_LastName.Size = new System.Drawing.Size(591, 20);
+            this.tb_LastName.Size = new System.Drawing.Size(590, 20);
             this.tb_LastName.TabIndex = 6;
+            this.tb_LastName.TextChanged += new System.EventHandler(this.tb_LastName_TextChanged);
             // 
             // tb_Contact
             // 
@@ -138,8 +140,9 @@
             this.tb_Contact.Location = new System.Drawing.Point(133, 40);
             this.tb_Contact.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Contact.Name = "tb_Contact";
-            this.tb_Contact.Size = new System.Drawing.Size(591, 20);
+            this.tb_Contact.Size = new System.Drawing.Size(590, 20);
             this.tb_Contact.TabIndex = 7;
+            this.tb_Contact.TextChanged += new System.EventHandler(this.tb_Contact_TextChanged);
             // 
             // tb_Email
             // 
@@ -147,7 +150,7 @@
             this.tb_Email.Location = new System.Drawing.Point(133, 60);
             this.tb_Email.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Email.Name = "tb_Email";
-            this.tb_Email.Size = new System.Drawing.Size(591, 20);
+            this.tb_Email.Size = new System.Drawing.Size(590, 20);
             this.tb_Email.TabIndex = 8;
             // 
             // tb_RegNo
@@ -156,7 +159,7 @@
             this.tb_RegNo.Location = new System.Drawing.Point(133, 80);
             this.tb_RegNo.Margin = new System.Windows.Forms.Padding(0);
             this.tb_RegNo.Name = "tb_RegNo";
-            this.tb_RegNo.Size = new System.Drawing.Size(591, 20);
+            this.tb_RegNo.Size = new System.Drawing.Size(590, 20);
             this.tb_RegNo.TabIndex = 9;
             // 
             // btn_insert
@@ -164,7 +167,7 @@
             this.btn_insert.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btn_insert.Location = new System.Drawing.Point(136, 132);
             this.btn_insert.Name = "btn_insert";
-            this.btn_insert.Size = new System.Drawing.Size(585, 23);
+            this.btn_insert.Size = new System.Drawing.Size(584, 23);
             this.btn_insert.TabIndex = 10;
             this.btn_insert.Text = "Insert Student";
             this.btn_insert.UseVisualStyleBackColor = true;
@@ -312,7 +315,7 @@
             this.cb_status.Location = new System.Drawing.Point(133, 100);
             this.cb_status.Margin = new System.Windows.Forms.Padding(0);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(591, 21);
+            this.cb_status.Size = new System.Drawing.Size(590, 21);
             this.cb_status.TabIndex = 16;
             // 
             // label7
@@ -335,7 +338,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.4435F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.5565F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tb_FirstName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cb_status, 1, 5);

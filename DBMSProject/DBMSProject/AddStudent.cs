@@ -16,6 +16,8 @@ namespace DBMSProject
     public partial class AddStudent : Form
     {
         public int index;
+        
+
         public AddStudent()
         {
             InitializeComponent();
@@ -23,146 +25,47 @@ namespace DBMSProject
 
         private void btn_insert_Click(object sender, EventArgs e)
         {
-
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            SqlDataReader reader;
-            conn.Open();
-            // First Name and Last Name can be same for two Students but all other fields are unique
-            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[Student] Where Contact = @contact OR Email = @email OR RegistrationNumber = @regno  ";
-            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            foreach(char c in tb_FirstName.Text)
             {
-
-                command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
-                command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
-                command.Parameters.AddWithValue("@contact", tb_Contact.Text);
-                command.Parameters.AddWithValue("@email", tb_Email.Text);
-                command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
-
-                
-                reader = command.ExecuteReader();
-            }
-            if (reader.HasRows && btn_insert.Text != "Update")
-            {
-                MessageBox.Show("Student with same Date already exist !");
-                return;
-            }
-
-
-            if (btn_insert.Text == "Insert Student")
-            {
-                if(tb_FirstName.Text == "" || tb_LastName.Text == "" || tb_Email.Text == "" || tb_Contact.Text=="" || tb_RegNo.Text=="" || cb_status.Text=="")
+                if(c < 65 || c > 122 ||(c < 97&& c > 90))
                 {
-                    MessageBox.Show("You can't insert a record with empty fields");
-                    return;
-                }
-
-                try {
-                    String query = "INSERT INTO dbo.Student (FirstName,LastName,Contact,Email,RegistrationNumber,Status) VALUES (@firstname,@lastname,@contact, @email, @regno, @status)";
-
-                    using (SqlCommand command = new SqlCommand(query, conn))
-                    {
-                        command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
-                        command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
-                        command.Parameters.AddWithValue("@contact", tb_Contact.Text);
-                        command.Parameters.AddWithValue("@email", tb_Email.Text);
-                        command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
-
-                        DataRowView drv = cb_status.SelectedItem as DataRowView;
-                        int i = Convert.ToInt32(drv.Row["Lookupid"]);
-                        command.Parameters.AddWithValue("@status", i);
-
-                        int result = command.ExecuteNonQuery();
-
-                        // Check Error
-                        if (result < 0)
-                            Console.WriteLine("Error inserting data into Database!");
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Trying to Insert Invalid data in database!");
+                    MessageBox.Show("First Name only have alphabets!");
                     return;
                 }
             }
-            else if (btn_insert.Text == "Update")
+            foreach (char c in tb_LastName.Text)
             {
-                try {
-                    String query = "UPDATE dbo.Student SET FirstName = @firstname,LastName = @lastname,Contact = @contact,Email = @email,RegistrationNumber = @regno,Status = @status Where id = @id";
-
-                    using (SqlCommand command = new SqlCommand(query, conn))
-                    {
-                        command.Parameters.AddWithValue("@firstname", tb_FirstName.Text);
-                        command.Parameters.AddWithValue("@lastname", tb_LastName.Text);
-                        command.Parameters.AddWithValue("@contact", tb_Contact.Text);
-                        command.Parameters.AddWithValue("@email", tb_Email.Text);
-                        command.Parameters.AddWithValue("@regno", tb_RegNo.Text);
-
-                        DataRowView drv = cb_status.SelectedItem as DataRowView;
-                        int i = Convert.ToInt32(drv.Row["Lookupid"]);
-                        command.Parameters.AddWithValue("@status", i);
-                        command.Parameters.AddWithValue("@id", index);
-
-                        int result = command.ExecuteNonQuery();
-
-                        // Check Error
-                        if (result < 0)
-                            Console.WriteLine("Error Updating data into Database!");
-                    }
-                }
-                catch
+                if (c < 65 || c > 122 || (c < 97 && c > 90))
                 {
-                    MessageBox.Show("This Record can not be updated due to invalid data or dependencies  in database!");
+                    MessageBox.Show("Last Name only have alphabets!");
                     return;
-                
                 }
+            }
+            foreach (char c in tb_Contact.Text)
+            {
+                if (c < 48 || c > 57 )
+                {
+                    MessageBox.Show("Contact only have Digits!");
+                    return;
                 }
-            String cmd = "SELECT * FROM [ProjectB].[dbo].[Student]";
-            SqlCommand commandf = new SqlCommand(cmd, conn);
-            // Add the parameters if required
-            commandf.Parameters.Add(new SqlParameter("0", 1));
-            reader = commandf.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            dataGridView1.DataSource = dt;
-            tb_FirstName.Clear();
-            tb_LastName.Clear();
-            tb_RegNo.Clear();
-            tb_Email.Clear();
-            tb_Contact.Clear();
+            }
+
+            Connection.InsertAndUpdate_Student(ref tb_FirstName, ref tb_LastName, ref tb_Contact, ref tb_RegNo, ref tb_Email, ref cb_status, ref btn_insert, ref index);
+            Connection.LoadStudentForm(ref dataGridView1, ref cb_status);
             
-            btn_insert.Text = "Insert Student";
+            
+           
         }
 
         private void AddStudent_Load(object sender, EventArgs e)
         {
-         
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
-            String cmd = "SELECT * FROM [ProjectB].[dbo].[Student]";
-            SqlCommand command = new SqlCommand(cmd, conn);
-            // Add the parameters if required
-            command.Parameters.Add(new SqlParameter("0", 1));
-            SqlDataReader reader = command.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            dataGridView1.DataSource = dt;
-
-            string query = "select Lookupid, Name from Lookup Where Category = 'STUDENT_STATUS'";
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "lookup");
-            cb_status.DisplayMember = "Name";
-            cb_status.ValueMember = "Lookupid";
-            cb_status.DataSource = ds.Tables["lookup"];
+            Connection.LoadStudentForm(ref dataGridView1, ref cb_status);   
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
@@ -182,49 +85,17 @@ namespace DBMSProject
             {
 
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "DELETE FROM [ProjectB].[dbo].[Student] Where id=@id";
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@id", i);
-
-
-
-                    int result = command.ExecuteNonQuery();
-
-                    // Check Error
-                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
-              
-
-                }
+                Connection.Delete_Student(i);
                
             }
 
-            String cmd = "SELECT * FROM [ProjectB].[dbo].[Student]";
-            SqlCommand commandf = new SqlCommand(cmd, conn);
-            // Add the parameters if required
-            commandf.Parameters.Add(new SqlParameter("0", 1));
-            SqlDataReader reader = commandf.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            dataGridView1.DataSource = dt;
+            Connection.LoadStudentForm(ref dataGridView1, ref cb_status);
         }
 
         private void btn_Fetch_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
-            String cmd = "SELECT * FROM [ProjectB].[dbo].[Student]";
-            SqlCommand command = new SqlCommand(cmd, conn);
-            // Add the parameters if required
-            command.Parameters.Add(new SqlParameter("0", 1));
-            SqlDataReader reader = command.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            dataGridView1.DataSource = dt;
 
-
-            conn.Close();
+            Connection.LoadStudentForm(ref dataGridView1, ref cb_status);
 
         }
 
@@ -234,5 +105,21 @@ namespace DBMSProject
             f.Show();
             this.Hide();
         }
+
+        private void tb_FirstName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tb_LastName_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void tb_Contact_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+        
     }
 }

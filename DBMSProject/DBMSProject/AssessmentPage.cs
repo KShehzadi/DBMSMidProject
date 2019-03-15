@@ -21,11 +21,10 @@ namespace DBMSProject
 
         private void AssessmentPage_Load(object sender, EventArgs e)
         {
-           
-           
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+
+
+            SqlConnection conn = Connection.buildconnection();
             String cmd = "SELECT * FROM [ProjectB].[dbo].[Assessment]";
             SqlCommand command = new SqlCommand(cmd, conn);
             // Add the parameters if required
@@ -39,9 +38,8 @@ namespace DBMSProject
         private void btn_Insert_Click(object sender, EventArgs e)
         {
 
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             if (btn_Insert.Text == "Add New Assessment")
             {
 
@@ -95,9 +93,8 @@ namespace DBMSProject
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
@@ -159,9 +156,8 @@ namespace DBMSProject
 
         private void btn_Fetch_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             String cmd = "SELECT * FROM [ProjectB].[dbo].[Assessment]";
             SqlCommand command = new SqlCommand(cmd, conn);
             // Add the parameters if required

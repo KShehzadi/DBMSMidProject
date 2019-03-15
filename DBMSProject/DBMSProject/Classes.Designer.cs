@@ -33,19 +33,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_Date = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.btn_Fetch = new System.Windows.Forms.Button();
-            this.projectBDataSet6 = new DBMSProject.ProjectBDataSet6();
-            this.classAttendanceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.classAttendanceTableAdapter = new DBMSProject.ProjectBDataSet6TableAdapters.ClassAttendanceTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendanceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Mark_Attendance = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.classAttendanceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projectBDataSet6 = new DBMSProject.ProjectBDataSet6();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.btn_Fetch = new System.Windows.Forms.Button();
+            this.classAttendanceTableAdapter = new DBMSProject.ProjectBDataSet6TableAdapters.ClassAttendanceTableAdapter();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classAttendanceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet6)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_insert
@@ -91,41 +94,6 @@
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(568, 380);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(61, 13);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Index Page";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // btn_Fetch
-            // 
-            this.btn_Fetch.Location = new System.Drawing.Point(496, 333);
-            this.btn_Fetch.Name = "btn_Fetch";
-            this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
-            this.btn_Fetch.TabIndex = 5;
-            this.btn_Fetch.Text = "Fetch";
-            this.btn_Fetch.UseVisualStyleBackColor = true;
-            this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
-            // 
-            // projectBDataSet6
-            // 
-            this.projectBDataSet6.DataSetName = "ProjectBDataSet6";
-            this.projectBDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // classAttendanceBindingSource
-            // 
-            this.classAttendanceBindingSource.DataMember = "ClassAttendance";
-            this.classAttendanceBindingSource.DataSource = this.projectBDataSet6;
-            // 
-            // classAttendanceTableAdapter
-            // 
-            this.classAttendanceTableAdapter.ClearBeforeFill = true;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -167,11 +135,71 @@
             this.Mark_Attendance.ToolTipText = "Mark Attendance";
             this.Mark_Attendance.UseColumnTextForButtonValue = true;
             // 
+            // classAttendanceBindingSource
+            // 
+            this.classAttendanceBindingSource.DataMember = "ClassAttendance";
+            this.classAttendanceBindingSource.DataSource = this.projectBDataSet6;
+            // 
+            // projectBDataSet6
+            // 
+            this.projectBDataSet6.DataSetName = "ProjectBDataSet6";
+            this.projectBDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(568, 380);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(61, 13);
+            this.linkLabel1.TabIndex = 4;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Index Page";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // btn_Fetch
+            // 
+            this.btn_Fetch.Location = new System.Drawing.Point(496, 333);
+            this.btn_Fetch.Name = "btn_Fetch";
+            this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
+            this.btn_Fetch.TabIndex = 5;
+            this.btn_Fetch.Text = "Fetch";
+            this.btn_Fetch.UseVisualStyleBackColor = true;
+            this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
+            // 
+            // classAttendanceTableAdapter
+            // 
+            this.classAttendanceTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(151, 12);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(306, 45);
+            this.tableLayoutPanel3.TabIndex = 21;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(300, 26);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Classes Management Page";
+            // 
             // Classes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 402);
+            this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.btn_Fetch);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.dataGridView1);
@@ -182,8 +210,10 @@
             this.Text = "Classes";
             this.Load += new System.EventHandler(this.Classes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.classAttendanceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet6)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +235,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Action;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewButtonColumn Mark_Attendance;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label7;
     }
 }

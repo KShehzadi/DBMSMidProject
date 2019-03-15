@@ -22,11 +22,8 @@ namespace DBMSProject
 
         private void Rubric_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'projectBDataSet3.Rubric' table. You can move, or remove it, as needed.
-          
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             String cmd = "SELECT * FROM [ProjectB].[dbo].[Rubric]";
             SqlCommand command = new SqlCommand(cmd, conn);
             // Add the parameters if required
@@ -98,9 +95,8 @@ namespace DBMSProject
        
         private void btn_rubric_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             try
             {
                 int number;
@@ -114,7 +110,7 @@ namespace DBMSProject
                         bool result = Int32.TryParse(((TextBox)ctr).Text, out number);
                         if (!result)
                         {
-                            MessageBox.Show("Warnning: Empty Rubric id not allowed!");
+                            MessageBox.Show("Warnning: "+ ((TextBox)ctr).Text + " Rubric id not allowed!");
                             return;
                         }
                         if (((TextBox)ctr).Text=="")
@@ -165,6 +161,14 @@ namespace DBMSProject
                     {
                         if (ctr is TextBox)
                         {
+                            foreach (char c in ((TextBox)ctr).Text)
+                            {
+                                if (c < 48 || c > 57)
+                                {
+                                    MessageBox.Show("Warning: RubricId only have Digits!");
+                                    return;
+                                }
+                            }
                             p = Convert.ToInt32(((TextBox)ctr).Text);
                         }
                     }
@@ -291,9 +295,8 @@ namespace DBMSProject
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&

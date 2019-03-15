@@ -20,10 +20,9 @@ namespace DBMSProject
 
         private void Rubric_Level_Form_Load(object sender, EventArgs e)
         {
-            
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+
+            SqlConnection conn = Connection.buildconnection();
             string query = "select id,Details from [ProjectB].[dbo].[Rubric]";
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataSet ds = new DataSet();
@@ -58,11 +57,11 @@ namespace DBMSProject
             int rubric_id;
             DataRowView drv = cb_rubric.SelectedItem as DataRowView;
             rubric_id = Convert.ToInt32(drv.Row["id"]);
-            
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
+
+
+            SqlConnection conn = Connection.buildconnection();
             SqlDataReader reader;
-            conn.Open();
+            
             // First Name and Last Name can be same for two Students but all other fields are unique
             String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @i";
             using (SqlCommand command = new SqlCommand(cmdcheck, conn))
@@ -153,9 +152,8 @@ namespace DBMSProject
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
@@ -209,9 +207,9 @@ namespace DBMSProject
 
         private void btn_Fetch_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
+            
             string query = "select id,Details from [ProjectB].[dbo].[Rubric]";
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataSet ds = new DataSet();

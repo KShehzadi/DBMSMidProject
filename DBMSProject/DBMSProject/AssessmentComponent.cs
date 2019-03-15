@@ -21,11 +21,10 @@ namespace DBMSProject
 
         private void AssessmentComponent_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'projectBDataSet5.AssessmentComponent' table. You can move, or remove it, as needed.
-           
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+            
+
+
+            SqlConnection conn = Connection.buildconnection();
             String cmd = "SELECT * FROM [ProjectB].[dbo].[AssessmentComponent]";
             SqlCommand command = new SqlCommand(cmd, conn);
             // Add the parameters if required
@@ -65,10 +64,9 @@ namespace DBMSProject
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
-            //try
+
+            SqlConnection conn = Connection.buildconnection();
+            try
             {
 
               
@@ -120,9 +118,9 @@ namespace DBMSProject
 
                     }
             }
-            //catch
+            catch
             {
-              //  MessageBox.Show("Trying to Send Invalid data in Database!");
+               MessageBox.Show("Trying to Send Invalid data in Database!");
             }
             tb_Name.Clear();
             tb_totalmarks.Clear();
@@ -140,9 +138,8 @@ namespace DBMSProject
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
@@ -194,9 +191,8 @@ namespace DBMSProject
 
         private void btn_Fetch_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             String cmd = "SELECT * FROM [ProjectB].[dbo].[AssessmentComponent]";
             SqlCommand commandf = new SqlCommand(cmd, conn);
             // Add the parameters if required

@@ -26,3 +26,19 @@ C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.A
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AssessmentComponent.resources
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Classes.resources
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Rubric_Level_Form.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\bin\Debug\DBMSProject.exe.config
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.exe
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.pdb
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\bin\Debug\DBMSProject.exe
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\bin\Debug\DBMSProject.pdb
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AddStudent.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AssessmentComponent.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.AssessmentPage.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Classes.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.CLO.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Form1.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Properties.Resources.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Rubric.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Rubric_Level_Form.resources
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csproj.GenerateResource.Cache
+C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csprojResolveAssemblyReference.cache

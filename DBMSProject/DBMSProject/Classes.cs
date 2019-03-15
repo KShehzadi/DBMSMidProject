@@ -21,9 +21,8 @@ namespace DBMSProject
 
         private void Classes_Load(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             String cmd1 = "SELECT * FROM [ProjectB].[dbo].[ClassAttendance]";
             SqlCommand command1 = new SqlCommand(cmd1, conn);
             // Add the parameters if required
@@ -44,9 +43,8 @@ namespace DBMSProject
 
         private void btn_insert_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             DateTime date = new DateTime();
             if(tb_Date.Text == "")
             {
@@ -147,9 +145,8 @@ namespace DBMSProject
 
         private void btn_Fetch_Click(object sender, EventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             String cmd1 = "SELECT * FROM [ProjectB].[dbo].[ClassAttendance]";
             SqlCommand command1 = new SqlCommand(cmd1, conn);
             // Add the parameters if required
@@ -162,9 +159,8 @@ namespace DBMSProject
         public int index;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
-            SqlConnection conn = new SqlConnection(conURL);
-            conn.Open();
+
+            SqlConnection conn = Connection.buildconnection();
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
