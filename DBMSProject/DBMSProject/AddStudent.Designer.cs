@@ -117,57 +117,57 @@
             // tb_FirstName
             // 
             this.tb_FirstName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_FirstName.Location = new System.Drawing.Point(133, 0);
+            this.tb_FirstName.Location = new System.Drawing.Point(125, 0);
             this.tb_FirstName.Margin = new System.Windows.Forms.Padding(0);
             this.tb_FirstName.Name = "tb_FirstName";
-            this.tb_FirstName.Size = new System.Drawing.Size(590, 20);
+            this.tb_FirstName.Size = new System.Drawing.Size(553, 20);
             this.tb_FirstName.TabIndex = 5;
             this.tb_FirstName.TextChanged += new System.EventHandler(this.tb_FirstName_TextChanged);
             // 
             // tb_LastName
             // 
             this.tb_LastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_LastName.Location = new System.Drawing.Point(133, 20);
+            this.tb_LastName.Location = new System.Drawing.Point(125, 20);
             this.tb_LastName.Margin = new System.Windows.Forms.Padding(0);
             this.tb_LastName.Name = "tb_LastName";
-            this.tb_LastName.Size = new System.Drawing.Size(590, 20);
+            this.tb_LastName.Size = new System.Drawing.Size(553, 20);
             this.tb_LastName.TabIndex = 6;
             this.tb_LastName.TextChanged += new System.EventHandler(this.tb_LastName_TextChanged);
             // 
             // tb_Contact
             // 
             this.tb_Contact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Contact.Location = new System.Drawing.Point(133, 40);
+            this.tb_Contact.Location = new System.Drawing.Point(125, 40);
             this.tb_Contact.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Contact.Name = "tb_Contact";
-            this.tb_Contact.Size = new System.Drawing.Size(590, 20);
+            this.tb_Contact.Size = new System.Drawing.Size(553, 20);
             this.tb_Contact.TabIndex = 7;
             this.tb_Contact.TextChanged += new System.EventHandler(this.tb_Contact_TextChanged);
             // 
             // tb_Email
             // 
             this.tb_Email.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Email.Location = new System.Drawing.Point(133, 60);
+            this.tb_Email.Location = new System.Drawing.Point(125, 60);
             this.tb_Email.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Email.Name = "tb_Email";
-            this.tb_Email.Size = new System.Drawing.Size(590, 20);
+            this.tb_Email.Size = new System.Drawing.Size(553, 20);
             this.tb_Email.TabIndex = 8;
             // 
             // tb_RegNo
             // 
             this.tb_RegNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_RegNo.Location = new System.Drawing.Point(133, 80);
+            this.tb_RegNo.Location = new System.Drawing.Point(125, 80);
             this.tb_RegNo.Margin = new System.Windows.Forms.Padding(0);
             this.tb_RegNo.Name = "tb_RegNo";
-            this.tb_RegNo.Size = new System.Drawing.Size(590, 20);
+            this.tb_RegNo.Size = new System.Drawing.Size(553, 20);
             this.tb_RegNo.TabIndex = 9;
             // 
             // btn_insert
             // 
             this.btn_insert.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_insert.Location = new System.Drawing.Point(136, 132);
+            this.btn_insert.Location = new System.Drawing.Point(128, 132);
             this.btn_insert.Name = "btn_insert";
-            this.btn_insert.Size = new System.Drawing.Size(584, 23);
+            this.btn_insert.Size = new System.Drawing.Size(547, 23);
             this.btn_insert.TabIndex = 10;
             this.btn_insert.Text = "Insert Student";
             this.btn_insert.UseVisualStyleBackColor = true;
@@ -312,10 +312,10 @@
             this.cb_status.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_status.FormattingEnabled = true;
-            this.cb_status.Location = new System.Drawing.Point(133, 100);
+            this.cb_status.Location = new System.Drawing.Point(125, 100);
             this.cb_status.Margin = new System.Windows.Forms.Padding(0);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(590, 21);
+            this.cb_status.Size = new System.Drawing.Size(553, 21);
             this.cb_status.TabIndex = 16;
             // 
             // label7
@@ -323,6 +323,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 0);
             this.label7.Name = "label7";
@@ -332,13 +333,13 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.4435F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.5565F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tb_FirstName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cb_status, 1, 5);
@@ -352,7 +353,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tb_Email, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tb_Contact, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btn_insert, 1, 6);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(160, 56);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(199, 56);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -363,7 +364,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(742, 169);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(703, 169);
             this.tableLayoutPanel1.TabIndex = 18;
             // 
             // tableLayoutPanel2
@@ -371,6 +372,7 @@
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 0, 0);
@@ -387,6 +389,7 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 0);
@@ -401,10 +404,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::DBMSProject.Properties.Resources.student_263162;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 548);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(1016, 587);
             this.Name = "AddStudent";
             this.Text = "AddStudent";
