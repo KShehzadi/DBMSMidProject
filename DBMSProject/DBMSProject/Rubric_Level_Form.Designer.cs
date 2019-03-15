@@ -314,6 +314,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
+            this.MaximumSize = new System.Drawing.Size(658, 440);
             this.Name = "Rubric_Level_Form";
             this.Text = "Rubric_Level_Form";
             this.Load += new System.EventHandler(this.Rubric_Level_Form_Load);
