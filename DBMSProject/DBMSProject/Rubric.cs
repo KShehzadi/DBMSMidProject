@@ -172,79 +172,90 @@ namespace DBMSProject
                     {
                         if (ctr is TextBox)
                         {
+                            string query;
                             string value = ((TextBox)ctr).Text;
-                            String query = "INSERT INTO dbo.Rubric (id,Details,CloId) VALUES (@i,@name,@id)";
-                            DataRowView drv = cb_clo.SelectedItem as DataRowView;
-                            int i = Convert.ToInt32(drv.Row["id"]);
-                            using (SqlCommand command = new SqlCommand(query, conn))
+                            try
                             {
+                                query = "INSERT INTO dbo.Rubric (id,Details,CloId) VALUES (@i,@name,@id)";
+                                DataRowView drv = cb_clo.SelectedItem as DataRowView;
+                                int newcloid = Convert.ToInt32(drv.Row["id"]);
+                                using (SqlCommand command = new SqlCommand(query, conn))
+                                {
 
-                                command.Parameters.AddWithValue("@name", value);
-                                command.Parameters.AddWithValue("@id", i);
-                                command.Parameters.AddWithValue("@i", p);
+                                    command.Parameters.AddWithValue("@name", value);
+                                    command.Parameters.AddWithValue("@id", newcloid);
+                                    command.Parameters.AddWithValue("@i", p);
 
-                                int result = command.ExecuteNonQuery();
+                                    int result = command.ExecuteNonQuery();
 
-                                // Check Error
-                                if (result < 0) Console.WriteLine("Error inserting data into Database!");
-                                
+                                    // Check Error
+                                    if (result < 0) Console.WriteLine("Error inserting data into Database!");
+
+
+                                }
+                                query = "Update dbo.AssessmentComponent SET RubricId=@newid where RubricId = @index";
+
+                                using (SqlCommand command = new SqlCommand(query, conn))
+                                {
+                                    command.Parameters.AddWithValue("@newid", p);
+                                    command.Parameters.AddWithValue("@index", index);
+
+                                    int result = command.ExecuteNonQuery();
+
+                                    // Check Error
+                                    if (result < 0) Console.WriteLine("Error Updating data into Database!");
+
+                                }
+                                query = "Update dbo.RubricLevel SET RubricId=@newid where RubricId = @index";
+
+                                using (SqlCommand command = new SqlCommand(query, conn))
+                                {
+                                    command.Parameters.AddWithValue("@newid", p);
+                                    command.Parameters.AddWithValue("@index", index);
+
+                                    int result = command.ExecuteNonQuery();
+
+                                    // Check Error
+                                    if (result < 0) Console.WriteLine("Error Updating data into Database!");
+
+                                }
+
+                                query = "Delete from dbo.Rubric where id = @index";
+                                using (SqlCommand command = new SqlCommand(query, conn))
+                                {
+
+                                    command.Parameters.AddWithValue("@index", index);
+
+                                    int result = command.ExecuteNonQuery();
+
+                                    // Check Error
+                                    if (result < 0) Console.WriteLine("Error Updating data into Database!");
+
+                                }
+                            }
+                            catch
+                            {
+                                query = "Update dbo.Rubric Set Details = @name,CloId = @id Where id = @index";
+                                DataRowView drv = cb_clo.SelectedItem as DataRowView;
+                                int newcloid = Convert.ToInt32(drv.Row["id"]);
+                                using (SqlCommand command = new SqlCommand(query, conn))
+                                {
+
+                                    command.Parameters.AddWithValue("@name", value);
+                                    command.Parameters.AddWithValue("@id", newcloid);
+                                    command.Parameters.AddWithValue("@index", index);
+
+
+                                    int result = command.ExecuteNonQuery();
+
+                                    // Check Error
+                                    if (result < 0) Console.WriteLine("Error inserting data into Database!");
+                                }
 
                             }
+                           
 
-                            
-                            query = "Update dbo.AssessmentComponent SET RubricId=@newid where RubricId = @index";
-                            
-                            using (SqlCommand command = new SqlCommand(query, conn))
-                            {
-                                command.Parameters.AddWithValue("@newid", p);
-                                command.Parameters.AddWithValue("@index", index);
-
-                                int result = command.ExecuteNonQuery();
-
-                                // Check Error
-                                if (result < 0) Console.WriteLine("Error Updating data into Database!");
-
-                            }
-
-                            query = "Update dbo.RubricLevel SET RubricId=@newid where RubricId = @index";
-                            
-                            using (SqlCommand command = new SqlCommand(query, conn))
-                            {
-                                command.Parameters.AddWithValue("@newid", p);
-                                command.Parameters.AddWithValue("@index", index);
-
-                                int result = command.ExecuteNonQuery();
-
-                                // Check Error
-                                if (result < 0) Console.WriteLine("Error Updating data into Database!");
-
-                            }
-                            query = "Update dbo.Rubric SET Details = @name,CloId=@id where id = @index";
-                            
-                            using (SqlCommand command = new SqlCommand(query, conn))
-                            {
-                                command.Parameters.AddWithValue("@name", value);
-                                command.Parameters.AddWithValue("@id", i);
-                                command.Parameters.AddWithValue("@index", index);
-                                
-                                int result = command.ExecuteNonQuery();
-
-                                // Check Error
-                                if (result < 0) Console.WriteLine("Error Updating data into Database!");
-
-                            }
-                            query = "Delete from dbo.Rubric where id = @index";
-                            using (SqlCommand command = new SqlCommand(query, conn))
-                            {
-                               
-                                command.Parameters.AddWithValue("@index", index);
-                                
-                                int result = command.ExecuteNonQuery();
-
-                                // Check Error
-                                if (result < 0) Console.WriteLine("Error Updating data into Database!");
-
-                            }
+                           
 
                         }
                     }
