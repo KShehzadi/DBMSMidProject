@@ -285,10 +285,30 @@ namespace DBMSProject
         {
 
             SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+            // First Name and Last Name can be same for two Students but all other fields are unique
+            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[Clo] Where Name = @name ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
 
+                command.Parameters.AddWithValue("@name", tb_cloname.Text);
+             
+
+                reader = command.ExecuteReader();
+            }
+            if (reader.HasRows && btn_clo.Text != "Update")
+            {
+                MessageBox.Show("same data exist can't update!");
+                return;
+            }
+            if(reader.HasRows)
+            {
+                MessageBox.Show("Warnning: same CLO already exist!");
+                return;
+            }
             if (btn_clo.Text == "Add CLO")
             {
-                SqlDataReader reader;
+                
                 string check = "Select * from dbo.CLO Where Name = @name";
                 using(SqlCommand checkcmd = new SqlCommand(check, conn))
                 {
@@ -321,6 +341,7 @@ namespace DBMSProject
             }
             else if (btn_clo.Text == "Update")
             {
+               
                 String query = "UPDATE CLO SET Name =@name,DateCreated=@dateupdated WHERE id = @id";
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
@@ -346,6 +367,136 @@ namespace DBMSProject
 
             }
         }
+      
+        public static void LoadRubricLevelForm(ref DataGridView dataGridView1,ref ComboBox cb_rubric)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            string query = "select id,Details from [ProjectB].[dbo].[Rubric]";
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "rubric");
+            cb_rubric.DisplayMember = "Details";
+            cb_rubric.ValueMember = "id";
+            cb_rubric.DataSource = ds.Tables["rubric"];
+
+            String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel]";
+            SqlCommand command = new SqlCommand(cmd, conn);
+            // Add the parameters if required
+            command.Parameters.Add(new SqlParameter("0", 1));
+            SqlDataReader reader = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
+        }
+        public static void insertorupdaterubriclevel(ref TextBox tb_measurement, ref TextBox tb_details,ref int index, ref DataGridView dataGridView1, ref ComboBox cb_rubric, ref Button btn_Add)
+        {
+
+            if (tb_measurement.Text == "" || tb_details.Text == "" || cb_rubric.Text == "")
+            {
+                MessageBox.Show("You can't insert a record with empty fields");
+                return;
+            }
+            int ml = -1;
+            ml = Convert.ToInt32(tb_measurement.Text);
+            if (ml == -1)
+            {
+                MessageBox.Show("Incorrect Measurement Level!");
+            }
+            int rubric_id;
+            DataRowView drv = cb_rubric.SelectedItem as DataRowView;
+            rubric_id = Convert.ToInt32(drv.Row["id"]);
+
+
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+
+            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[RubricLevel] Where MeasurementLevel = @i";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@i", ml);
+
+
+                reader = command.ExecuteReader();
+            }
+            if (reader.HasRows)
+            {
+                MessageBox.Show("Rubric Already have this measurement level record in database!");
+                return;
+            }
+            if (btn_Add.Text == "Add Level")
+            {
+
+
+                try
+                {
+                    String query = "INSERT INTO dbo.RubricLevel (RubricId, Details,MeasurementLevel) VALUES (@rid,@d,@ml)";
+
+                    using (SqlCommand command = new SqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@rid", rubric_id);
+                        command.Parameters.AddWithValue("@d", tb_details.Text);
+                        command.Parameters.AddWithValue("@ml", ml);
+
+
+
+
+                        int result = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            Console.WriteLine("Error inserting data into Database!");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Trying to Insert Invalid data in database!");
+                    return;
+                }
+            }
+            else if (btn_Add.Text == "Update")
+            {
+                try
+                {
+                    String query = "UPDATE dbo.RubricLevel SET RubricId = @rid,Details = @d,MeasurementLevel = @m Where id = @id";
+
+                    using (SqlCommand command = new SqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@rid", rubric_id);
+                        command.Parameters.AddWithValue("@d", tb_details.Text);
+                        command.Parameters.AddWithValue("@m", ml);
+
+                        command.Parameters.AddWithValue("@id", index);
+
+                        int result = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            Console.WriteLine("Error Updating data into Database!");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("This Record can not be updated due to invalid data or dependencies  in database!");
+                    return;
+
+                }
+            }
+            String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel]";
+            SqlCommand commandf = new SqlCommand(cmd, conn);
+            // Add the parameters if required
+            commandf.Parameters.Add(new SqlParameter("0", 1));
+            reader = commandf.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
+            tb_details.Clear();
+            tb_measurement.Clear();
+
+
+            btn_Add.Text = "Add Level";
+        }
     public static SqlConnection buildconnection()
         {
             String conURL = "Data Source = DESKTOP-NGEMSRA; Initial Catalog = ProjectB; Integrated Security = True; MultipleActiveResultSets = True";
@@ -357,6 +508,501 @@ namespace DBMSProject
             }
             return conn;
 
+        }
+        public static DateTime getAttendanceDatebyId(int id)
+        {
+            SqlConnection conn =  Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT AttendanceDate FROM [ProjectB].[dbo].[ClassAttendance] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+            // add reader's datetime in date object
+            DateTime date = DateTime.Now;
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("CLO with this id does not exist");
+                return DateTime.Now;
+            }
+
+            
+            while (reader.Read())
+            {
+                date = reader.GetDateTime(0);
+            }
+
+            return date;
+        }
+
+        public static int getAttendanceidbydatefromclassAttendance(DateTime id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT Id FROM [ProjectB].[dbo].[ClassAttendance] Where AttendanceDate = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+            // add reader's datetime in date object
+            int aid = -1;
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("CLO with this id does not exist");
+                return aid;
+            }
+
+
+            while (reader.Read())
+            {
+                aid = reader.GetInt32(0);
+            }
+
+            return aid;
+        }
+        public static bool CheckExistingClassesbyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[StudentAttendance] Where AttendanceId = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+            
+            if (reader.HasRows)
+            {
+               
+                return true;
+            }
+
+
+           
+            return false;
+        }
+
+        public static string getCloNamebyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+            String cmdcheck = "SELECT Name FROM [ProjectB].[dbo].[Clo] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+            if(!reader.HasRows)
+            {
+                MessageBox.Show("CLO with this id does not exist");
+                return "error";
+            }
+
+            string cloname = "cloname";
+            while (reader.Read())
+            {
+                cloname = reader.GetString(0);
+            }
+           
+            return cloname;
+        }
+
+        public static string getLookupNamebyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+            String cmdcheck = "SELECT Name FROM [ProjectB].[dbo].[Lookup] Where LookupId = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("LookUp with this id does not exist");
+                return "error";
+            }
+
+            string name = "cloname";
+            while (reader.Read())
+            {
+                name = reader.GetString(0);
+            }
+
+            return name;
+        }
+        public static string getRubricNamebyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+            
+            String cmdcheck = "SELECT Details FROM [ProjectB].[dbo].[Rubric] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+           
+            
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Rubric with this id does not exist");
+                return "error";
+            }
+
+            string rubricdetails = "rubricdetails";
+            while (reader.Read())
+            {
+                rubricdetails = reader.GetString(0);
+            }
+
+            return rubricdetails;
+        }
+        public static string getStudentRegNobyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT RegistrationNumber FROM [ProjectB].[dbo].[Student] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Student with this id does not exist");
+                return "error";
+            }
+
+            string RegNo = "RegNo";
+            while (reader.Read())
+            {
+                RegNo = reader.GetString(0);
+            }
+
+            return RegNo;
+        }
+
+        public static string getStudentFirstNamebyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT FirstName FROM [ProjectB].[dbo].[Student] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Student with this id does not exist");
+                return "error";
+            }
+
+            string Firstname = "first name";
+            while (reader.Read())
+            {
+                Firstname = reader.GetString(0);
+            }
+
+            return Firstname;
+        }
+        public static string getStudentLastNamebyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT LastName FROM [ProjectB].[dbo].[Student] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Student with this id does not exist");
+                return "error";
+            }
+
+            string Lastname = "last name";
+            while (reader.Read())
+            {
+                Lastname = reader.GetString(0);
+            }
+
+            return Lastname;
+        }
+        public static string getStudentEmailbyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT Email FROM [ProjectB].[dbo].[Student] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Student with this id does not exist");
+                return "error";
+            }
+
+            string email = "email";
+            while (reader.Read())
+            {
+                email = reader.GetString(0);
+            }
+
+            return email;
+        }
+        public static string getStudentContactbyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT Contact FROM [ProjectB].[dbo].[Student] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Student Contact with this id does not exist");
+                return "error";
+            }
+
+            string contact = "contact";
+            while (reader.Read())
+            {
+                contact = reader.GetString(0);
+            }
+
+            return contact;
+        }
+
+
+        public static int getStudentIdbyRegistrationNumber(string reg)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT Id FROM [ProjectB].[dbo].[Student] Where RegistrationNumber = @reg ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@reg", reg);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Student with this Registeration Number does not exist");
+                return -1;
+            }
+
+            int id = 0;
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+
+            return id;
+        }
+
+        public static int getLookupIdbyName(string name)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT LookupId FROM [ProjectB].[dbo].[Lookup] Where Name = @name ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@name", name);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Lookup with this name does not exist");
+                return -1;
+            }
+
+            int id = 0;
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+
+            return id;
+        }
+
+        public static SqlDataReader getStudentIdAndAttendanceStatusFromStudentAttendance(int attendanceid)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT StudentId, AttendanceStatus FROM [ProjectB].[dbo].[StudentAttendance] Where AttendanceId = @at ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+                command.Parameters.AddWithValue("@at", attendanceid);
+                reader = command.ExecuteReader();
+            }
+
+
+            if(!reader.HasRows)
+            {
+                return null;
+            }
+            
+
+            return reader;
+        }
+
+        public static bool MarkStudentAttendance(int attendanceid,int studentid,int attendancestatus)
+        {
+            try
+            {
+                SqlConnection conn = Connection.buildconnection();
+                String query = "INSERT INTO dbo.StudentAttendance (AttendanceId, StudentId,AttendanceStatus) VALUES (@aid,@sid,@ast)";
+
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@aid", attendanceid);
+                    command.Parameters.AddWithValue("@sid", studentid);
+                    command.Parameters.AddWithValue("@ast", attendancestatus);
+
+
+
+
+                    int result = command.ExecuteNonQuery();
+
+                    // Check Error
+                    if (result < 0)
+                    {
+                        Console.WriteLine("Error inserting data into Database!");
+                        return false;
+
+                    }
+
+
+                }
+
+            }
+          
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        public static bool UpdateStudentAttendance(ref int astatus, ref int indexclassid, ref int indexstudentid)
+        {
+            SqlConnection conn = Connection.buildconnection();
+
+            String query = "UPDATE StudentAttendance SET AttendanceStatus =@ast WHERE AttendanceId = @aid AND StudentId = @sid";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@ast", astatus);
+
+                command.Parameters.AddWithValue("@aid", indexclassid);
+                command.Parameters.AddWithValue("@sid", indexstudentid);
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result <= 0)
+                {
+                    Console.WriteLine("Error Updating data into Database!");
+                    return false;
+                }
+               
+            }
+            return true;
+        }
+        public static bool DeleteStudentAttendance(ref int classid, ref int studentid)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            String query = "DELETE FROM [ProjectB].[dbo].[StudentAttendance] Where AttendanceId=@aid AND StudentId = @sid";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@aid", classid);
+                command.Parameters.AddWithValue("@sid", studentid);
+
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result <= 0)
+                {
+                    Console.WriteLine("Error Deleting data From Database!");
+                    return false;
+                }
+
+
+            }
+            return true;
         }
     }
 }

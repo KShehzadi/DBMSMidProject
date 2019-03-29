@@ -43,6 +43,9 @@ namespace DBMSProject
             cb_Assessment.ValueMember = "id";
             cb_Assessment.DataSource = ds.Tables["assessment"];
 
+
+
+
             query = "select id, Details from [ProjectB].[dbo].[Rubric]";
             da = new SqlDataAdapter(query, conn);
             ds = new DataSet();

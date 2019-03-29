@@ -76,5 +76,12 @@ namespace DBMSProject
             c.Show();
             this.Hide();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            StudentAttendanceForm s = new StudentAttendanceForm();
+            s.Show();
+            this.Hide();
+        }
     }
 }

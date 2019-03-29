@@ -137,6 +137,12 @@
     <Compile Include="Rubric_Level_Form.Designer.cs">
       <DependentUpon>Rubric_Level_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentAttendanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentAttendanceForm.Designer.cs">
+      <DependentUpon>StudentAttendanceForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rubric_Level_Form.resx">
       <DependentUpon>Rubric_Level_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentAttendanceForm.resx">
+      <DependentUpon>StudentAttendanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ProjectBDataSet.xsc">
       <DependentUpon>ProjectBDataSet.xsd</DependentUpon>
