@@ -37,7 +37,22 @@ namespace DBMSProject
 
         private void btn_Insert_Click(object sender, EventArgs e)
         {
-
+            foreach (char c in tb_TotalMarks.Text)
+            {
+                if (c < 48 || c > 57)
+                {
+                    MessageBox.Show("Total Marks can only have Digits!");
+                    return;
+                }
+            }
+            foreach (char c in tb_TotalWeiaghtage.Text)
+            {
+                if (c < 48 || c > 57)
+                {
+                    MessageBox.Show("Total Weightage can only have Digits!");
+                    return;
+                }
+            }
 
             SqlConnection conn = Connection.buildconnection();
             if (btn_Insert.Text == "Add New Assessment")
@@ -113,35 +128,16 @@ namespace DBMSProject
             {
 
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "DELETE FROM [ProjectB].[dbo].[AssessmentComponent] Where AssessmentId=@id";
-                using (SqlCommand command = new SqlCommand(query, conn))
+                if(Connection.DeleteAssessmentbyid(i))
                 {
-                    command.Parameters.AddWithValue("@id", i);
-
-
-
-                    int result = command.ExecuteNonQuery();
-
-                    // Check Error
-                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
-
-
+                    MessageBox.Show("Deleted Successfully!");
                 }
-                query = "DELETE FROM [ProjectB].[dbo].[Assessment] Where id=@id";
-                using (SqlCommand command = new SqlCommand(query, conn))
+                else
                 {
-                    command.Parameters.AddWithValue("@id", i);
-
-
-
-                    int result = command.ExecuteNonQuery();
-
-                    // Check Error
-                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
-
-
+                    MessageBox.Show("Error Occured");
                 }
 
+                
             }
 
             String cmd = "SELECT * FROM [ProjectB].[dbo].[Assessment]";

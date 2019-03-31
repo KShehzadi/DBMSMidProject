@@ -268,7 +268,8 @@ namespace DBMSProject
             }
             catch
             {
-                MessageBox.Show("Trying to Send Invalid data in Database!");
+                MessageBox.Show("Same Rubric Key Insertion Not Allowed!");
+               
             }
             textBox1.Show();
             textBox1.Clear();
@@ -340,31 +341,15 @@ namespace DBMSProject
             {
 
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "Delete FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId=@id";
-                using (SqlCommand commandl = new SqlCommand(query, conn))
+                if(Connection.Delete_Rubricbyid(i))
                 {
-                    commandl.Parameters.AddWithValue("@id", i);
-                    int result = commandl.ExecuteNonQuery();
+                    MessageBox.Show("Deleted Successfully!");
                 }
-                query = "Delete FROM [ProjectB].[dbo].[RubricLevel] Where RubricId=@id";
-                using (SqlCommand commandl = new SqlCommand(query, conn))
+                else
                 {
-                    commandl.Parameters.AddWithValue("@id", i);
-                    int result = commandl.ExecuteNonQuery();
+                    MessageBox.Show("Error Occured!");
                 }
-                query = "DELETE FROM [ProjectB].[dbo].[Rubric] Where id=@id";
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@id", i);
-
-
-
-                    int result = command.ExecuteNonQuery();
-
-                    // Check Error
-                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
-
-                }
+                
             }
 
             String cmd = "SELECT * FROM [ProjectB].[dbo].[Rubric]";

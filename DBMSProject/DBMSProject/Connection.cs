@@ -39,6 +39,14 @@ namespace DBMSProject
         public static void Delete_Student(int i)
         {
             SqlConnection conn = Connection.buildconnection();
+            if(Connection.DeleteStudentAttendancebyStudentid(i))
+            {
+                MessageBox.Show("All the attendance of this student deleted successfully!");
+            }
+            if (Connection.DeleteStudentResultbyStudentId(i))
+            {
+                MessageBox.Show("All the Results of this student deleted successfully!");
+            }
             String query = "DELETE FROM [ProjectB].[dbo].[Student] Where id=@id";
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -53,6 +61,7 @@ namespace DBMSProject
 
 
             }
+            MessageBox.Show("Deleted Successfully!");
         }
         public static void InsertAndUpdate_Student(ref TextBox tb_FirstName, ref TextBox tb_LastName, ref TextBox tb_Contact, ref TextBox tb_RegNo, ref TextBox tb_Email, ref ComboBox cb_status, ref Button btn_insert, ref int index)
         {
@@ -201,11 +210,49 @@ namespace DBMSProject
                 {
 
 
-                    query = "Delete FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId=@id";
-                    using (SqlCommand commandl = new SqlCommand(query, conn))
+                    query = "Select Id FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId=@id";
+                    using (SqlCommand commandr = new SqlCommand(query, conn))
                     {
-                        commandl.Parameters.AddWithValue("@id", rubricid);
-                        int result = commandl.ExecuteNonQuery();
+                        commandr.Parameters.AddWithValue("@id", rubricid);
+
+
+                        SqlDataReader readerassessmentcomponent = command.ExecuteReader();
+                        count = 0;
+                        recordcount = 0;
+                        while (readerassessmentcomponent.Read())
+                        {
+                            recordcount++;
+                        }
+                        int[] assessmentcomponentarray = new int[recordcount];
+                        readerassessmentcomponent.Close();
+                        readerassessmentcomponent = command.ExecuteReader();
+                        while (readerassessmentcomponent.Read())
+                        {
+                            int rubricid1 = readerassessmentcomponent.GetInt32(0);
+                            assessmentcomponentarray[count] = rubricid1;
+                            count++;
+                        }
+                        readerassessmentcomponent.Close();
+                        foreach (int rubriclevelid in assessmentcomponentarray)
+                        {
+
+                            query = "Delete FROM [ProjectB].[dbo].[StudentResult] Where AssessmentComponentId=@id";
+                            using (SqlCommand commandl = new SqlCommand(query, conn))
+                            {
+                                commandl.Parameters.AddWithValue("@id", rubriclevelid);
+                                int result = commandl.ExecuteNonQuery();
+                            }
+                        }
+                        foreach (int asrubricid in rubricarray)
+                        {
+
+                            query = "Delete FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId=@id";
+                            using (SqlCommand commandl = new SqlCommand(query, conn))
+                            {
+                                commandl.Parameters.AddWithValue("@id", asrubricid);
+                                int result = commandl.ExecuteNonQuery();
+                            }
+                        }
                     }
                 }
                 foreach (int rubricid in rubricarray)
@@ -396,6 +443,19 @@ namespace DBMSProject
                 MessageBox.Show("You can't insert a record with empty fields");
                 return;
             }
+            foreach (char c in tb_measurement.Text)
+            {
+                if (c < 48 || c > 57)
+                {
+                    MessageBox.Show("Measurement Level can only have Digits!");
+                    return;
+                }
+            }
+            if(tb_measurement.Text != "1" || tb_measurement.Text != "2" || tb_measurement.Text != "3" || tb_measurement.Text != "4")
+            {
+                MessageBox.Show("You can only assign 1-4 Measurement Level to a Rubric Level");
+                return;
+            }
             int ml = -1;
             ml = Convert.ToInt32(tb_measurement.Text);
             if (ml == -1)
@@ -411,18 +471,19 @@ namespace DBMSProject
             SqlDataReader reader;
 
 
-            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[RubricLevel] Where MeasurementLevel = @i";
+            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[RubricLevel] Where MeasurementLevel = @i AND RubricId = @rid";
             using (SqlCommand command = new SqlCommand(cmdcheck, conn))
             {
 
                 command.Parameters.AddWithValue("@i", ml);
+                command.Parameters.AddWithValue("@rid", rubric_id);
 
 
                 reader = command.ExecuteReader();
             }
             if (reader.HasRows)
             {
-                MessageBox.Show("Rubric Already have this measurement level record in database!");
+                MessageBox.Show("This Rubric Already have this measurement level record in database!");
                 return;
             }
             if (btn_Add.Text == "Add Level")
@@ -802,6 +863,36 @@ namespace DBMSProject
 
             return email;
         }
+        public static string getRubricDetailsbyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT Email FROM [ProjectB].[dbo].[Rubric] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Rubric with this id does not exist");
+                return "error";
+            }
+
+            string email = "Rubric";
+            while (reader.Read())
+            {
+                email = reader.GetString(0);
+            }
+
+            return email;
+        }
         public static string getStudentContactbyId(int id)
         {
             SqlConnection conn = Connection.buildconnection();
@@ -999,6 +1090,287 @@ namespace DBMSProject
                     Console.WriteLine("Error Deleting data From Database!");
                     return false;
                 }
+
+
+            }
+            return true;
+        }
+
+        public static bool DeleteStudentAttendancebyClassid(int id)
+        {
+
+            SqlConnection conn = Connection.buildconnection();
+            String query = "DELETE FROM [ProjectB].[dbo].[StudentAttendance] Where AttendanceId=@aid";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@aid", id);
+                
+
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result <= 0)
+                {
+                    Console.WriteLine("Error Deleting data From Database!");
+                    return false;
+                }
+
+
+            }
+
+            return true;
+
+        }
+        public static bool DeleteStudentResultbyRubricMeasurementid(int id)
+        {
+
+            SqlConnection conn = Connection.buildconnection();
+            String query = "DELETE FROM [ProjectB].[dbo].[StudentResult] Where RubricMeasurementId=@aid";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@aid", id);
+
+
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result <= 0)
+                {
+                    Console.WriteLine("Error Deleting data From Database!");
+                    return false;
+                }
+
+
+            }
+
+            return true;
+
+        }
+
+        public static bool DeleteStudentResultbyAssessmentComponentid(int id)
+        {
+
+            SqlConnection conn = Connection.buildconnection();
+            String query = "DELETE FROM [ProjectB].[dbo].[StudentResult] Where AssessmentComponentId=@aid";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@aid", id);
+
+
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result <= 0)
+                {
+                    Console.WriteLine("Error Deleting data From Database!");
+                    return false;
+                }
+
+
+            }
+
+            return true;
+
+        }
+        public static bool DeleteStudentResultbyStudentId(int id)
+        {
+
+            SqlConnection conn = Connection.buildconnection();
+            String query = "DELETE FROM [ProjectB].[dbo].[StudentResult] Where StudentId=@aid";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@aid", id);
+
+
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result <= 0)
+                {
+                    Console.WriteLine("Error Deleting data From Database!");
+                    return false;
+                }
+
+
+            }
+
+            return true;
+
+        }
+
+        public static bool DeleteStudentAttendancebyStudentid(int id)
+        {
+
+            SqlConnection conn = Connection.buildconnection();
+            String query = "DELETE FROM [ProjectB].[dbo].[StudentAttendance] Where StudentId=@aid";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@aid", id);
+
+
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result <= 0)
+                {
+                    Console.WriteLine("Error Deleting data From Database!");
+                    return false;
+                }
+
+
+            }
+
+            return true;
+
+        }
+        public static bool Delete_Rubricbyid(int i)
+        {
+            SqlConnection conn = Connection.buildconnection();
+
+
+            SqlDataReader AssessmentComponentreader;
+            int assessmentid;
+            String cmdcheck1 = "SELECT Id FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId = @at ";
+            using (SqlCommand command = new SqlCommand(cmdcheck1, conn))
+            {
+                command.Parameters.AddWithValue("@at", i);
+                AssessmentComponentreader = command.ExecuteReader();
+            }
+            if(AssessmentComponentreader.HasRows)
+            {
+                while(AssessmentComponentreader.Read())
+                {
+                    assessmentid = AssessmentComponentreader.GetInt32(0);
+                    Connection.DeleteStudentResultbyAssessmentComponentid(assessmentid);
+                }
+            }
+            SqlDataReader Rubriclevelreader;
+            int rubriclevelid;
+            String cmdcheck2 = "SELECT Id FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId = @at ";
+            using (SqlCommand command = new SqlCommand(cmdcheck2, conn))
+            {
+                command.Parameters.AddWithValue("@at", i);
+                Rubriclevelreader = command.ExecuteReader();
+            }
+            if (Rubriclevelreader.HasRows)
+            {
+                while (Rubriclevelreader.Read())
+                {
+                    rubriclevelid = Rubriclevelreader.GetInt32(0);
+                    Connection.DeleteStudentResultbyAssessmentComponentid(rubriclevelid);
+                }
+            }
+
+
+            String query = "Delete FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId=@id";
+            using (SqlCommand commandl = new SqlCommand(query, conn))
+            {
+                commandl.Parameters.AddWithValue("@id", i);
+                int result = commandl.ExecuteNonQuery();
+            }
+            query = "Delete FROM [ProjectB].[dbo].[RubricLevel] Where RubricId=@id";
+            using (SqlCommand commandl = new SqlCommand(query, conn))
+            {
+                commandl.Parameters.AddWithValue("@id", i);
+                int result = commandl.ExecuteNonQuery();
+            }
+            query = "DELETE FROM [ProjectB].[dbo].[Rubric] Where id=@id";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@id", i);
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0) return false;
+
+            }
+            return true;
+        }
+        public static bool DeleteAssessmentbyid(int i)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader AssessmentComponentreader;
+            int assessmentid;
+            String cmdcheck1 = "SELECT Id FROM [ProjectB].[dbo].[AssessmentComponent] Where RubricId = @at ";
+            using (SqlCommand command = new SqlCommand(cmdcheck1, conn))
+            {
+                command.Parameters.AddWithValue("@at", i);
+                AssessmentComponentreader = command.ExecuteReader();
+            }
+            if (AssessmentComponentreader.HasRows)
+            {
+                while (AssessmentComponentreader.Read())
+                {
+                    assessmentid = AssessmentComponentreader.GetInt32(0);
+                    Connection.DeleteStudentResultbyAssessmentComponentid(assessmentid);
+                }
+            }
+
+            String query = "DELETE FROM [ProjectB].[dbo].[AssessmentComponent] Where AssessmentId=@id";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@id", i);
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0) return false;
+
+
+            }
+            query = "DELETE FROM [ProjectB].[dbo].[Assessment] Where id=@id";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@id", i);
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0) return false;
+
+
+            }
+
+            return true;
+        }
+        public static bool DeleteRubricLevelById(int i)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            Connection.DeleteStudentResultbyRubricMeasurementid(i);
+
+            String query = "DELETE FROM [ProjectB].[dbo].[RubricLevel] Where id=@id";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@id", i);
+
+
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0) return false;
 
 
             }

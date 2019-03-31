@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Attendance_Status = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.RegisterationNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Update_Status = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -43,12 +48,8 @@
             this.tb_StudentRegisterationNumber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cb_AttendanceStatus = new System.Windows.Forms.ComboBox();
-            this.Attendance_Status = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.RegisterationNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update_Status = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_refresh = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -72,6 +73,39 @@
             this.dataGridView1.Size = new System.Drawing.Size(615, 163);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Attendance_Status
+            // 
+            this.Attendance_Status.DataPropertyName = "Attendance_Status";
+            this.Attendance_Status.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Attendance_Status.HeaderText = "Attendance_Status";
+            this.Attendance_Status.Name = "Attendance_Status";
+            // 
+            // RegisterationNumber
+            // 
+            this.RegisterationNumber.HeaderText = "RegisterationNumber";
+            this.RegisterationNumber.Name = "RegisterationNumber";
+            this.RegisterationNumber.ReadOnly = true;
+            // 
+            // AttendanceDate
+            // 
+            this.AttendanceDate.HeaderText = "AttendanceDate";
+            this.AttendanceDate.Name = "AttendanceDate";
+            this.AttendanceDate.ReadOnly = true;
+            // 
+            // Update_Status
+            // 
+            this.Update_Status.HeaderText = "Update_Status";
+            this.Update_Status.Name = "Update_Status";
+            this.Update_Status.Text = "Update_Status";
+            this.Update_Status.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // tableLayoutPanel1
             // 
@@ -103,7 +137,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.67901F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.32099F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.cb_class, 1, 0);
@@ -149,14 +183,14 @@
             this.cb_class.FormattingEnabled = true;
             this.cb_class.Location = new System.Drawing.Point(150, 3);
             this.cb_class.Name = "cb_class";
-            this.cb_class.Size = new System.Drawing.Size(170, 21);
+            this.cb_class.Size = new System.Drawing.Size(168, 21);
             this.cb_class.TabIndex = 2;
             // 
             // btn_MarkAttendance
             // 
             this.btn_MarkAttendance.Location = new System.Drawing.Point(150, 74);
             this.btn_MarkAttendance.Name = "btn_MarkAttendance";
-            this.btn_MarkAttendance.Size = new System.Drawing.Size(170, 21);
+            this.btn_MarkAttendance.Size = new System.Drawing.Size(168, 21);
             this.btn_MarkAttendance.TabIndex = 5;
             this.btn_MarkAttendance.Text = "Mark Attendance";
             this.btn_MarkAttendance.UseVisualStyleBackColor = true;
@@ -164,7 +198,7 @@
             // 
             // btn_Update
             // 
-            this.btn_Update.Location = new System.Drawing.Point(326, 74);
+            this.btn_Update.Location = new System.Drawing.Point(324, 74);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(207, 21);
             this.btn_Update.TabIndex = 6;
@@ -187,7 +221,7 @@
             this.tb_StudentRegisterationNumber.Location = new System.Drawing.Point(150, 28);
             this.tb_StudentRegisterationNumber.Name = "tb_StudentRegisterationNumber";
             this.tb_StudentRegisterationNumber.ReadOnly = true;
-            this.tb_StudentRegisterationNumber.Size = new System.Drawing.Size(170, 20);
+            this.tb_StudentRegisterationNumber.Size = new System.Drawing.Size(168, 20);
             this.tb_StudentRegisterationNumber.TabIndex = 7;
             // 
             // label3
@@ -205,57 +239,37 @@
             this.cb_AttendanceStatus.FormattingEnabled = true;
             this.cb_AttendanceStatus.Location = new System.Drawing.Point(150, 53);
             this.cb_AttendanceStatus.Name = "cb_AttendanceStatus";
-            this.cb_AttendanceStatus.Size = new System.Drawing.Size(170, 21);
+            this.cb_AttendanceStatus.Size = new System.Drawing.Size(168, 21);
             this.cb_AttendanceStatus.TabIndex = 9;
-            // 
-            // Attendance_Status
-            // 
-            this.Attendance_Status.DataPropertyName = "Attendance_Status";
-            this.Attendance_Status.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Attendance_Status.HeaderText = "Attendance_Status";
-            this.Attendance_Status.Name = "Attendance_Status";
-            // 
-            // RegisterationNumber
-            // 
-            this.RegisterationNumber.HeaderText = "RegisterationNumber";
-            this.RegisterationNumber.Name = "RegisterationNumber";
-            this.RegisterationNumber.ReadOnly = true;
-            // 
-            // AttendanceDate
-            // 
-            this.AttendanceDate.HeaderText = "AttendanceDate";
-            this.AttendanceDate.Name = "AttendanceDate";
-            this.AttendanceDate.ReadOnly = true;
-            // 
-            // Update_Status
-            // 
-            this.Update_Status.HeaderText = "Update_Status";
-            this.Update_Status.Name = "Update_Status";
-            this.Update_Status.Text = "Update_Status";
-            this.Update_Status.UseColumnTextForButtonValue = true;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // btn_refresh
             // 
             this.btn_refresh.Location = new System.Drawing.Point(150, 102);
             this.btn_refresh.Name = "btn_refresh";
-            this.btn_refresh.Size = new System.Drawing.Size(170, 24);
+            this.btn_refresh.Size = new System.Drawing.Size(168, 24);
             this.btn_refresh.TabIndex = 10;
             this.btn_refresh.Text = "Refresh Page";
             this.btn_refresh.UseVisualStyleBackColor = true;
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(184, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(269, 26);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Student Attendance Page";
             // 
             // StudentAttendanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 367);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StudentAttendanceForm";
@@ -268,6 +282,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -294,5 +309,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Update_Status;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.Button btn_refresh;
+        private System.Windows.Forms.Label label5;
     }
 }

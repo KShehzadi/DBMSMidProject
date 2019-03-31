@@ -67,7 +67,22 @@ namespace DBMSProject
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-
+            foreach (char c in tb_Name.Text)
+            {
+                if (c < 65 || c > 122 || (c < 97 && c > 90))
+                {
+                    MessageBox.Show("Name can only have alphabets!");
+                    return;
+                }
+            }
+            foreach (char c in tb_totalmarks.Text)
+            {
+                if (c < 48 || c > 57)
+                {
+                    MessageBox.Show("Total Marks can only have Digits!");
+                    return;
+                }
+            }
             SqlConnection conn = Connection.buildconnection();
             try
             {
@@ -124,6 +139,7 @@ namespace DBMSProject
             catch
             {
                MessageBox.Show("Trying to Send Invalid data in Database!");
+                return;
             }
             tb_Name.Clear();
             tb_totalmarks.Clear();

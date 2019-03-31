@@ -124,6 +124,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjectBDataSet7.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ProjectBDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectBDataSet8.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rubric.cs">
       <SubType>Form</SubType>
@@ -136,6 +141,12 @@
     </Compile>
     <Compile Include="Rubric_Level_Form.Designer.cs">
       <DependentUpon>Rubric_Level_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student Assessment Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student Assessment Form.Designer.cs">
+      <DependentUpon>Student Assessment Form.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentAttendanceForm.cs">
       <SubType>Form</SubType>
@@ -176,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rubric_Level_Form.resx">
       <DependentUpon>Rubric_Level_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student Assessment Form.resx">
+      <DependentUpon>Student Assessment Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentAttendanceForm.resx">
       <DependentUpon>StudentAttendanceForm.cs</DependentUpon>
@@ -267,6 +281,17 @@
     </None>
     <None Include="ProjectBDataSet7.xss">
       <DependentUpon>ProjectBDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectBDataSet8.xsc">
+      <DependentUpon>ProjectBDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectBDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProjectBDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProjectBDataSet8.xss">
+      <DependentUpon>ProjectBDataSet8.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

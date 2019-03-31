@@ -43,3 +43,4 @@ C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMS
 C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csproj.GenerateResource.Cache
 C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csprojResolveAssemblyReference.cache
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.StudentAttendanceForm.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Student_Assessment_Form.resources

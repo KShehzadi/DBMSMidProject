@@ -50,21 +50,7 @@ namespace DBMSProject
             {
 
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
-                String query = "DELETE FROM [ProjectB].[dbo].[RubricLevel] Where id=@id";
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@id", i);
-
-
-
-                    int result = command.ExecuteNonQuery();
-
-                    // Check Error
-                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
-
-
-                }
-
+                Connection.DeleteRubricLevelById(i);
             }
 
             String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel]";
@@ -105,6 +91,32 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+        }
+
+        private void btn_filter_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection conn = Connection.buildconnection();
+            int rubric_id;
+            DataRowView drv = cb_rubric.SelectedItem as DataRowView;
+            rubric_id = Convert.ToInt32(drv.Row["id"]);
+
+            SqlDataReader reader;
+
+            String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @id";
+            using (SqlCommand command = new SqlCommand(cmd, conn))
+            {
+                // Add the parameters if required
+                command.Parameters.AddWithValue("@id", rubric_id);
+
+                reader = command.ExecuteReader();
+            }
+            
+           
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
+
         }
     }
 }

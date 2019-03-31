@@ -52,6 +52,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_filter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rubricLevelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet7)).BeginInit();
@@ -82,6 +83,7 @@
             // 
             this.cb_rubric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_rubric.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_rubric.FormattingEnabled = true;
             this.cb_rubric.Location = new System.Drawing.Point(192, 3);
             this.cb_rubric.Name = "cb_rubric";
@@ -129,7 +131,7 @@
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(183, 23);
             this.btn_Add.TabIndex = 6;
-            this.btn_Add.Text = "Assign Level";
+            this.btn_Add.Text = "Add Level";
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
@@ -259,6 +261,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cb_rubric, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_filter, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(227, 49);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -302,6 +305,16 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(352, 37);
             this.tableLayoutPanel3.TabIndex = 13;
+            // 
+            // btn_filter
+            // 
+            this.btn_filter.Location = new System.Drawing.Point(3, 100);
+            this.btn_filter.Name = "btn_filter";
+            this.btn_filter.Size = new System.Drawing.Size(169, 23);
+            this.btn_filter.TabIndex = 7;
+            this.btn_filter.Text = "Filter by Rubric";
+            this.btn_filter.UseVisualStyleBackColor = true;
+            this.btn_filter.Click += new System.EventHandler(this.btn_filter_Click);
             // 
             // Rubric_Level_Form
             // 
@@ -356,5 +369,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button btn_filter;
     }
 }

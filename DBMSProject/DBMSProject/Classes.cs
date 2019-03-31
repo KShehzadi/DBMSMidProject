@@ -114,7 +114,7 @@ namespace DBMSProject
                             {
 
                                 command.Parameters.AddWithValue("@datecreated", date.Date);
-                                command.Parameters.AddWithValue("@index", index);
+                                command.Parameters.AddWithValue("@index", indexclassid);
 
 
                                 int result = command.ExecuteNonQuery();
@@ -156,7 +156,7 @@ namespace DBMSProject
             dt.Load(reader1);
             dataGridView1.DataSource = dt;
         }
-        public int index;
+        public int indexclassid;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -166,7 +166,7 @@ namespace DBMSProject
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0 && senderGrid.Columns[e.ColumnIndex].HeaderText == "Update")
             {
-                index = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
+                indexclassid = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
                 DateTime date = new DateTime();
                 date = (Convert.ToDateTime(dataGridView1[1, e.RowIndex].Value)).Date;
                 if(Convert.ToString(date.Month).Length == 1)
@@ -195,6 +195,10 @@ namespace DBMSProject
             {
 
                 int i = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
+                if(Connection.DeleteStudentAttendancebyClassid(i))
+                {
+                    MessageBox.Show("All the student attendance from this class are deleted!");
+                }
                 String query = "DELETE FROM [ProjectB].[dbo].[ClassAttendance] Where id=@id";
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
@@ -205,10 +209,15 @@ namespace DBMSProject
                     int result = command.ExecuteNonQuery();
 
                     // Check Error
-                    if (result < 0) Console.WriteLine("Error Deleting data From Database!");
+                    if (result < 0)
+                    {
+                        Console.WriteLine("Error Deleting data From Database!");
+                        return;
+                    }
 
 
                 }
+                MessageBox.Show("Class Deleted Successfully!");
 
             }
             else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&

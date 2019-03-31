@@ -115,7 +115,9 @@ namespace DBMSProject
                 {
                     MessageBox.Show("Student with Reg #" + dataGridView1[1, i].Value.ToString() + " attendance is already marked you can't mark it twice! but you can Update it !");
                 }
+               
             }
+            
             btn_refresh_Click(sender, e);
         }
 
