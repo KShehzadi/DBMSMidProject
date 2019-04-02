@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace DBMSProject
 {
@@ -42,52 +45,34 @@ namespace DBMSProject
 
         private void btn_CLOReports_Click(object sender, EventArgs e)
         {
+
+           
+
             DataRowView drv = cb_Student.SelectedItem as DataRowView;
-            SqlConnection conn = Connection.buildconnection();
             int studentid = Convert.ToInt32(drv.Row["Id"]);
-            string queryclo = "SELECT Id, Name FROM CLO ";
-            SqlCommand Commandclo = new SqlCommand(queryclo, conn);
-            SqlDataReader readerClo = Commandclo.ExecuteReader();
-            DataTable datatableclo = new DataTable();
-            datatableclo.Load(readerClo);
-            int CLOid;
-            int RubricId;
-            int assessmentcomponentid;
-            for(int i = 0; i < datatableclo.Rows.Count;i++)
+            if(Connection.GenerateCloReportbyStudentId(studentid))
             {
-                CLOid = Convert.ToInt32(datatableclo.Rows[i].ItemArray[0]);
-                conn = Connection.buildconnection();
-                string queryrubric = "SELECT Id, Details FROM Rubric WHERE CloId = @cloid";
-                SqlCommand Commandrubric = new SqlCommand(queryrubric, conn);
-                Commandrubric.Parameters.AddWithValue("@cloid", CLOid);
-                SqlDataReader readerRubric = Commandrubric.ExecuteReader();
-                DataTable datatablerubric = new DataTable();
-                datatablerubric.Load(readerRubric);
-                
-                for (int j = 0; j < datatablerubric.Rows.Count; j++)
-                {
-                    RubricId = Convert.ToInt32(datatablerubric.Rows[j].ItemArray[0]);
-                    conn = Connection.buildconnection();
-                    string queryassessment = "SELECT Id, Name FROM AssessmentComponent WHERE RubricId = @rid";
-                    SqlCommand Commandassessment = new SqlCommand(queryassessment, conn);
-                    Commandassessment.Parameters.AddWithValue("@rid", RubricId);
-                    SqlDataReader readerassessment = Commandassessment.ExecuteReader();
-                    DataTable datatableassessment = new DataTable();
-                    datatableassessment.Load(readerassessment);
-                    for (int k = 0; k < datatableassessment.Rows.Count; k++)
-                    {
-                        assessmentcomponentid = Convert.ToInt32(datatableassessment.Rows[k].ItemArray[0]);
-                        string assessmentname = Connection.getAssessmentComponentNamebyId(assessmentcomponentid);
-                        string rubricname = Connection.getRubricNamebyId(RubricId);
-                        int componentmarks = Connection.getAssessmentComponentTotalMarksbyid(assessmentcomponentid);
-                        int studentrubriclevel = Connection.getMeasurementLevelbyRubricLevelId(Connection.getRubricMeasurementIdbyAssessmentComponentIdAndStudentIdFromStudentResult(studentid, assessmentcomponentid));
-                        int maxrubriclevel = Connection.getMaximumRubricLevelbyRubricId(RubricId);
-                        float obtainedmarks = (float)((((float)studentrubriclevel) / ((float)maxrubriclevel)) * ((float)componentmarks));
-                    }
+                MessageBox.Show("Report is Generated here : E:/1A Semesters/6th semester/DBMS Labs.");
+            }
+            else
+            {
+                MessageBox.Show("Failed To Generate Report!");
+            }
 
+           
+        }
 
-
-                }
+        private void btn_Assessment_Click(object sender, EventArgs e)
+        {
+            DataRowView drv = cb_Student.SelectedItem as DataRowView;
+            int studentid = Convert.ToInt32(drv.Row["Id"]);
+            if (Connection.GenerateAssessmentReportbyStudentId(studentid))
+            {
+                MessageBox.Show("Assessment Report is Generated here : E:/1A Semesters/6th semester/DBMS Labs.");
+            }
+            else
+            {
+                MessageBox.Show("Failed To Generate Report!");
             }
 
         }

@@ -115,6 +115,7 @@
             this.btn_Assessment.TabIndex = 3;
             this.btn_Assessment.Text = "Download Assessment Report";
             this.btn_Assessment.UseVisualStyleBackColor = true;
+            this.btn_Assessment.Click += new System.EventHandler(this.btn_Assessment_Click);
             // 
             // IndividualStudent_sCLOReports
             // 
