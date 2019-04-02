@@ -113,9 +113,9 @@
             this.label.AutoSize = true;
             this.label.Location = new System.Drawing.Point(3, 0);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(61, 13);
+            this.label.Size = new System.Drawing.Size(59, 13);
             this.label.TabIndex = 4;
-            this.label.Text = "Select CLO";
+            this.label.Text = "select CLO";
             // 
             // label2
             // 

@@ -844,7 +844,7 @@ namespace DBMSProject.ProjectBDataSet2TableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Assessment] ([Title], [DateCreated], [TotalMarks], [TotalWeigh" +
-                "tage]) VALUES (@Title, @DateCreated, @TotalMarks, @TotalWeightage);\r\nSELECT Id, " +
+                "tage]) VALUES (@Title, @DateCreated, @TotalMarks, @TotalWeightage);\r\nselect Id, " +
                 "Title, DateCreated, TotalMarks, TotalWeightage FROM Assessment WHERE (Id = SCOPE" +
                 "_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
@@ -855,7 +855,7 @@ namespace DBMSProject.ProjectBDataSet2TableAdapters {
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Assessment] SET [Title] = @Title, [DateCreated] = @DateCreated, [TotalMarks] = @TotalMarks, [TotalWeightage] = @TotalWeightage WHERE (([Id] = @Original_Id) AND ([Title] = @Original_Title) AND ([DateCreated] = @Original_DateCreated) AND ([TotalMarks] = @Original_TotalMarks) AND ([TotalWeightage] = @Original_TotalWeightage));
-SELECT Id, Title, DateCreated, TotalMarks, TotalWeightage FROM Assessment WHERE (Id = @Id)";
+select Id, Title, DateCreated, TotalMarks, TotalWeightage FROM Assessment WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -882,7 +882,7 @@ SELECT Id, Title, DateCreated, TotalMarks, TotalWeightage FROM Assessment WHERE 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Title, DateCreated, TotalMarks, TotalWeightage FROM dbo.Assessment";
+            this._commandCollection[0].CommandText = "select Id, Title, DateCreated, TotalMarks, TotalWeightage FROM dbo.Assessment";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

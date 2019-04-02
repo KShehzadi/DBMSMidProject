@@ -451,7 +451,7 @@ namespace DBMSProject
                     return;
                 }
             }
-            if(tb_measurement.Text != "1" || tb_measurement.Text != "2" || tb_measurement.Text != "3" || tb_measurement.Text != "4")
+            if(tb_measurement.Text != "1" && tb_measurement.Text != "2" && tb_measurement.Text != "3" && tb_measurement.Text != "4")
             {
                 MessageBox.Show("You can only assign 1-4 Measurement Level to a Rubric Level");
                 return;
@@ -570,6 +570,7 @@ namespace DBMSProject
             return conn;
 
         }
+
         public static DateTime getAttendanceDatebyId(int id)
         {
             SqlConnection conn =  Connection.buildconnection();
@@ -601,6 +602,192 @@ namespace DBMSProject
             return date;
         }
 
+        public static int getMeasurementLevelbyRubricLevelId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT MeasurementLevel FROM [ProjectB].[dbo].[RubricLevel] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+            // add reader's datetime in date object
+            int ml = -1;
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("RubricLevel with this id does not exist");
+                return ml;
+            }
+
+
+            while (reader.Read())
+            {
+                ml = reader.GetInt32(0);
+            }
+
+            return ml;
+        }
+
+        public static int getRubricIdbyAssessmentComponentId(int asid)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT RubricId FROM [ProjectB].[dbo].[AssessmentComponent] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", asid);
+
+
+                reader = command.ExecuteReader();
+            }
+            // add reader's datetime in date object
+            int ml = -1;
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Rubric with this id does not exist");
+                return ml;
+            }
+
+
+            while (reader.Read())
+            {
+                ml = reader.GetInt32(0);
+            }
+
+            return ml;
+        }
+        public static int getMaximumRubricLevelbyRubricId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT Max(MeasurementLevel) FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+            // add reader's datetime in date object
+            int ml = -1;
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Rubric with this id does not exist");
+                return ml;
+            }
+
+
+            while (reader.Read())
+            {
+                ml = reader.GetInt32(0);
+            }
+
+            return ml;
+        }
+
+        public static bool UpdateRubricMeasurementLevelIdFromStudentResult(int Studentid, int assessmentcomponentid, int rubricmeasurementid)
+        {
+            try
+            {
+                SqlConnection conn = Connection.buildconnection();
+
+                String query = "UPDATE dbo.StudentResult SET RubricMeasurementId = @rmid WHERE StudentId = @sid AND AssessmentComponentId = @asid";
+
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@sid", Studentid);
+                    command.Parameters.AddWithValue("@asid", assessmentcomponentid);
+                    command.Parameters.AddWithValue("@rmid", rubricmeasurementid);
+
+
+
+                    int result = command.ExecuteNonQuery();
+
+                    // Check Error
+                    if (result < 0) return false;
+
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool DeleteFromStudentResult(int Studentid, int assessmentcomponentid, int rubricmeasurementid)
+        {
+            try
+            {
+                SqlConnection conn = Connection.buildconnection();
+
+                String query = "DELETE FROM dbo.StudentResult WHERE RubricMeasurementId = @rmid AND StudentId = @sid AND AssessmentComponentId = @asid";
+
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@sid", Studentid);
+                    command.Parameters.AddWithValue("@asid", assessmentcomponentid);
+                    command.Parameters.AddWithValue("@rmid", rubricmeasurementid);
+
+
+
+                    int result = command.ExecuteNonQuery();
+
+                    // Check Error
+                    if (result < 0) return false;
+
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public static int getIdbyRubricIdAndMeasurementLevelFromRubricLevel(int rubricid, int measurementlevel)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT id FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @id AND MeasurementLevel = @ml ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", rubricid);
+                command.Parameters.AddWithValue("@ml", measurementlevel);
+
+
+                reader = command.ExecuteReader();
+            }
+            // add reader's datetime in date object
+            int id = -1;
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("RubricLevel with this Rubric id and Measurement Level does not exist");
+                return id;
+            }
+
+
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+
+            return id;
+        }
+
+
         public static int getAttendanceidbydatefromclassAttendance(DateTime id)
         {
             SqlConnection conn = Connection.buildconnection();
@@ -631,6 +818,7 @@ namespace DBMSProject
 
             return aid;
         }
+
         public static bool CheckExistingClassesbyId(int id)
         {
             SqlConnection conn = Connection.buildconnection();
@@ -654,6 +842,34 @@ namespace DBMSProject
 
 
            
+            return false;
+        }
+
+        public static bool CheckExistingResult(int studentid, int assessmentcomponentid)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[StudentResult] Where StudentId = @sid AND AssessmentComponentId = @acid";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@sid", studentid);
+                command.Parameters.AddWithValue("@acid", assessmentcomponentid);
+                
+
+
+                reader = command.ExecuteReader();
+            }
+
+            if (reader.HasRows)
+            {
+
+                return true;
+            }
+
+
+
             return false;
         }
 
@@ -987,6 +1203,100 @@ namespace DBMSProject
             return id;
         }
 
+        public static string getAssessmentComponentNamebyId(int id)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT Name FROM [ProjectB].[dbo].[AssessmentComponent] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", id);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Lookup with this name does not exist");
+                return "error";
+            }
+
+            string  name = "";
+            while (reader.Read())
+            {
+                name = reader.GetString(0);
+            }
+
+            return name;
+        }
+
+        public static int getAssessmentComponentTotalMarksbyid(int asid)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT TotalMarks FROM [ProjectB].[dbo].[AssessmentComponent] Where Id = @id ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", asid);
+
+
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Assessment Component with this name does not exist");
+                return -1;
+            }
+
+            int marks = 0;
+            while (reader.Read())
+            {
+                marks = reader.GetInt32(0);
+            }
+
+            return marks;
+        }
+
+        public static int getRubricMeasurementIdbyAssessmentComponentIdAndStudentIdFromStudentResult(int Studentid,int asid)
+        {
+            SqlConnection conn = Connection.buildconnection();
+            SqlDataReader reader;
+
+            String cmdcheck = "SELECT RubricMeasurementId FROM [ProjectB].[dbo].[StudentResult] Where AssessmentComponentId = @id AND StudentId = @sid ";
+            using (SqlCommand command = new SqlCommand(cmdcheck, conn))
+            {
+
+                command.Parameters.AddWithValue("@id", asid);
+                command.Parameters.AddWithValue("@sid", asid);
+                reader = command.ExecuteReader();
+            }
+
+
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Student Result with these ids does not exist");
+                return -1;
+            }
+
+            int id = 0;
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+
+            return id;
+        }
+
+
+
         public static SqlDataReader getStudentIdAndAttendanceStatusFromStudentAttendance(int attendanceid)
         {
             SqlConnection conn = Connection.buildconnection();
@@ -1043,6 +1353,50 @@ namespace DBMSProject
             catch
             {
                 return false;
+            }
+            return true;
+        }
+
+
+
+
+
+
+        public static bool MarkStudentAssessment(int studentid, int assessmentcomponentid, int rubricmeasurementid, DateTime date)
+        {
+            try
+            {
+                SqlConnection conn = Connection.buildconnection();
+                String query = "INSERT INTO dbo.StudentResult (StudentId, AssessmentComponentId,RubricMeasurementId, EvaluationDate) VALUES (@sid,@acid,@rmid,@date)";
+
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@sid", studentid);
+                    command.Parameters.AddWithValue("@acid", assessmentcomponentid);
+                    command.Parameters.AddWithValue("@rmid", rubricmeasurementid);
+                    command.Parameters.AddWithValue("@date", date);
+
+
+
+
+                    int result = command.ExecuteNonQuery();
+
+                    // Check Error
+                    if (result < 0)
+                    {
+                        Console.WriteLine("Error inserting data into Database!");
+                        return false;
+
+                    }
+
+
+                }
+
+            }
+
+            catch
+            {
+               return false;
             }
             return true;
         }

@@ -758,13 +758,13 @@ namespace DBMSProject.ProjectBDataSet6TableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ClassAttendance] ([AttendanceDate]) VALUES (@AttendanceDate);\r" +
-                "\nSELECT Id, AttendanceDate FROM ClassAttendance WHERE (Id = SCOPE_IDENTITY())";
+                "\nselect Id, AttendanceDate FROM ClassAttendance WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AttendanceDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AttendanceDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ClassAttendance] SET [AttendanceDate] = @AttendanceDate WHERE (([Id" +
-                "] = @Original_Id) AND ([AttendanceDate] = @Original_AttendanceDate));\r\nSELECT Id" +
+                "] = @Original_Id) AND ([AttendanceDate] = @Original_AttendanceDate));\r\nselect Id" +
                 ", AttendanceDate FROM ClassAttendance WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AttendanceDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AttendanceDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -786,7 +786,7 @@ namespace DBMSProject.ProjectBDataSet6TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, AttendanceDate FROM dbo.ClassAttendance";
+            this._commandCollection[0].CommandText = "select Id, AttendanceDate FROM dbo.ClassAttendance";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -44,3 +44,6 @@ C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMS
 C:\Users\Dc\Desktop\DBMSMidProject-master\DBMSProject\DBMSProject\obj\Debug\DBMSProject.csprojResolveAssemblyReference.cache
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.StudentAttendanceForm.resources
 C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.Student_Assessment_Form.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.IndividualStudentResultForm.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.IndividualStudent_sCLOReports.resources
+C:\Users\Dc\Desktop\Dbms Project\DBMSProject\DBMSProject\obj\Debug\DBMSProject.ReportsIndexForm.resources

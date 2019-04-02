@@ -816,7 +816,7 @@ namespace DBMSProject.ProjectBDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Clo] ([Name], [DateCreated], [DateUpdated]) VALUES (@Name, @Da" +
-                "teCreated, @DateUpdated);\r\nSELECT Id, Name, DateCreated, DateUpdated FROM Clo WH" +
+                "teCreated, @DateUpdated);\r\nselect Id, Name, DateCreated, DateUpdated FROM Clo WH" +
                 "ERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -825,7 +825,7 @@ namespace DBMSProject.ProjectBDataSetTableAdapters {
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Clo] SET [Name] = @Name, [DateCreated] = @DateCreated, [DateUpdated] = @DateUpdated WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([DateCreated] = @Original_DateCreated) AND ([DateUpdated] = @Original_DateUpdated));
-SELECT Id, Name, DateCreated, DateUpdated FROM Clo WHERE (Id = @Id)";
+select Id, Name, DateCreated, DateUpdated FROM Clo WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -850,7 +850,7 @@ SELECT Id, Name, DateCreated, DateUpdated FROM Clo WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, DateCreated, DateUpdated FROM dbo.Clo";
+            this._commandCollection[0].CommandText = "select Id, Name, DateCreated, DateUpdated FROM dbo.Clo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

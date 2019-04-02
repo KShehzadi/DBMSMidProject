@@ -814,7 +814,7 @@ namespace DBMSProject.ProjectBDataSet7TableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[RubricLevel] ([RubricId], [Details], [MeasurementLevel]) VALUE" +
-                "S (@RubricId, @Details, @MeasurementLevel);\r\nSELECT Id, RubricId, Details, Measu" +
+                "S (@RubricId, @Details, @MeasurementLevel);\r\nselect Id, RubricId, Details, Measu" +
                 "rementLevel FROM RubricLevel WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RubricId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RubricId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -823,7 +823,7 @@ namespace DBMSProject.ProjectBDataSet7TableAdapters {
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[RubricLevel] SET [RubricId] = @RubricId, [Details] = @Details, [MeasurementLevel] = @MeasurementLevel WHERE (([Id] = @Original_Id) AND ([RubricId] = @Original_RubricId) AND ([MeasurementLevel] = @Original_MeasurementLevel));
-SELECT Id, RubricId, Details, MeasurementLevel FROM RubricLevel WHERE (Id = @Id)";
+select Id, RubricId, Details, MeasurementLevel FROM RubricLevel WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RubricId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RubricId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Details", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Details", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -847,7 +847,7 @@ SELECT Id, RubricId, Details, MeasurementLevel FROM RubricLevel WHERE (Id = @Id)
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, RubricId, Details, MeasurementLevel FROM dbo.RubricLevel";
+            this._commandCollection[0].CommandText = "select Id, RubricId, Details, MeasurementLevel FROM dbo.RubricLevel";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

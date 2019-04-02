@@ -90,5 +90,19 @@ namespace DBMSProject
             s.Show();
             this.Hide();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            IndividualStudentResultForm i = new IndividualStudentResultForm();
+            i.Show();
+            this.Hide();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ReportsIndexForm r = new ReportsIndexForm();
+            r.Show();
+            this.Hide();
+        }
     }
 }

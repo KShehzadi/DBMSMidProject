@@ -782,7 +782,7 @@ namespace DBMSProject.ProjectBDataSet3TableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Rubric] ([Id], [Details], [CloId]) VALUES (@Id, @Details, @Clo" +
-                "Id);\r\nSELECT Id, Details, CloId FROM Rubric WHERE (Id = @Id)";
+                "Id);\r\nselect Id, Details, CloId FROM Rubric WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Details", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Details", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -790,7 +790,7 @@ namespace DBMSProject.ProjectBDataSet3TableAdapters {
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Rubric] SET [Id] = @Id, [Details] = @Details, [CloId] = @CloId WHER" +
-                "E (([Id] = @Original_Id) AND ([CloId] = @Original_CloId));\r\nSELECT Id, Details, " +
+                "E (([Id] = @Original_Id) AND ([CloId] = @Original_CloId));\r\nselect Id, Details, " +
                 "CloId FROM Rubric WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -813,7 +813,7 @@ namespace DBMSProject.ProjectBDataSet3TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Details, CloId FROM dbo.Rubric";
+            this._commandCollection[0].CommandText = "select Id, Details, CloId FROM dbo.Rubric";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

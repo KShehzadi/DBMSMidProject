@@ -66,9 +66,9 @@ namespace DBMSProject
             string query1 = "select LookupId, Name from Lookup Where Category = 'ATTENDANCE_STATUS'";
             SqlDataAdapter da1 = new SqlDataAdapter(query1, conn);
             DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "Name");
+            da1.Fill(ds1, "lookup");
            
-            ((DataGridViewComboBoxColumn)dataGridView1.Columns[0]).DataSource = ds1.Tables["Name"];
+            ((DataGridViewComboBoxColumn)dataGridView1.Columns[0]).DataSource = ds1.Tables["lookup"];
             ((DataGridViewComboBoxColumn)dataGridView1.Columns[0]).DisplayMember = "Name";
             ((DataGridViewComboBoxColumn)dataGridView1.Columns[0]).ValueMember = "LookupId";
             btn_Update.Hide();

@@ -43,6 +43,7 @@ namespace DBMSProject
 
         private void btn_insert_Click(object sender, EventArgs e)
         {
+            dateTimePicker1.CustomFormat = "yyyy, MM dd";
 
             SqlConnection conn = Connection.buildconnection();
             DateTime date = new DateTime();
@@ -233,6 +234,32 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+        }
+
+        private void tb_Date_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+           
+            if (dateTimePicker1.Value.Month.ToString().Length == 1)
+            {
+                tb_Date.Text = dateTimePicker1.Value.Year.ToString() + "-0" + dateTimePicker1.Value.Month.ToString() + "-" + dateTimePicker1.Value.Day.ToString();
+            }
+            else if (dateTimePicker1.Value.Day.ToString().Length == 1)
+            {
+                tb_Date.Text = dateTimePicker1.Value.Year.ToString() + "-" + dateTimePicker1.Value.Month.ToString() + "-0" + dateTimePicker1.Value.Day.ToString();
+            }
+            else if (dateTimePicker1.Value.Month.ToString().Length == 1 && dateTimePicker1.Value.Day.ToString().Length == 1)
+            {
+                tb_Date.Text = dateTimePicker1.Value.Year.ToString() + "-0" + dateTimePicker1.Value.Month.ToString() + "-0" + dateTimePicker1.Value.Day.ToString();
+            }
+            else
+            {
+                tb_Date.Text = dateTimePicker1.Value.Year.ToString() + "-" + dateTimePicker1.Value.Month.ToString() + "-" + dateTimePicker1.Value.Day.ToString();
+            }
         }
     }
 }

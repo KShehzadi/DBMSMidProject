@@ -53,7 +53,7 @@ namespace DBMSProject
                 Connection.DeleteRubricLevelById(i);
             }
 
-            String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel]";
+            String cmd = "select * FROM [ProjectB].[dbo].[RubricLevel]";
             SqlCommand commandf = new SqlCommand(cmd, conn);
             // Add the parameters if required
             commandf.Parameters.Add(new SqlParameter("0", 1));
@@ -83,7 +83,7 @@ namespace DBMSProject
             cb_rubric.ValueMember = "id";
             cb_rubric.DataSource = ds.Tables["rubric"];
 
-            String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel]";
+            String cmd = "select * FROM [ProjectB].[dbo].[RubricLevel]";
             SqlCommand command = new SqlCommand(cmd, conn);
             // Add the parameters if required
             command.Parameters.Add(new SqlParameter("0", 1));
@@ -103,7 +103,7 @@ namespace DBMSProject
 
             SqlDataReader reader;
 
-            String cmd = "SELECT * FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @id";
+            String cmd = "select * FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @id";
             using (SqlCommand command = new SqlCommand(cmd, conn))
             {
                 // Add the parameters if required

@@ -83,6 +83,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IndividualStudent%27sCLOReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndividualStudent%27sCLOReports.Designer.cs">
+      <DependentUpon>IndividualStudent%27sCLOReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndividualStudentResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndividualStudentResultForm.Designer.cs">
+      <DependentUpon>IndividualStudentResultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -130,6 +142,12 @@
       <DependentUpon>ProjectBDataSet8.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportsIndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsIndexForm.Designer.cs">
+      <DependentUpon>ReportsIndexForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rubric.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +190,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IndividualStudent%27sCLOReports.resx">
+      <DependentUpon>IndividualStudent%27sCLOReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndividualStudentResultForm.resx">
+      <DependentUpon>IndividualStudentResultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -182,6 +206,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportsIndexForm.resx">
+      <DependentUpon>ReportsIndexForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Rubric.resx">
       <DependentUpon>Rubric.cs</DependentUpon>
     </EmbeddedResource>

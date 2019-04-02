@@ -45,6 +45,7 @@
             this.classAttendanceTableAdapter = new DBMSProject.ProjectBDataSet6TableAdapters.ClassAttendanceTableAdapter();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classAttendanceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet6)).BeginInit();
@@ -74,8 +75,10 @@
             // 
             this.tb_Date.Location = new System.Drawing.Point(172, 61);
             this.tb_Date.Name = "tb_Date";
+            this.tb_Date.ReadOnly = true;
             this.tb_Date.Size = new System.Drawing.Size(100, 20);
             this.tb_Date.TabIndex = 2;
+            this.tb_Date.TextChanged += new System.EventHandler(this.tb_Date_TextChanged);
             // 
             // dataGridView1
             // 
@@ -194,11 +197,20 @@
             this.label7.TabIndex = 17;
             this.label7.Text = "Classes Management Page";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(268, 61);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(32, 20);
+            this.dateTimePicker1.TabIndex = 22;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
             // Classes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 402);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.btn_Fetch);
             this.Controls.Add(this.linkLabel1);
@@ -237,5 +249,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Mark_Attendance;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

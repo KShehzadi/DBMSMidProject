@@ -898,7 +898,7 @@ namespace DBMSProject.ProjectBDataSet4TableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[AssessmentComponent] ([Name], [RubricId], [TotalMarks], [DateCreated], [DateUpdated], [AssessmentId]) VALUES (@Name, @RubricId, @TotalMarks, @DateCreated, @DateUpdated, @AssessmentId);
-SELECT Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FROM AssessmentComponent WHERE (Id = SCOPE_IDENTITY())";
+select Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FROM AssessmentComponent WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RubricId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RubricId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -909,7 +909,7 @@ SELECT Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FR
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[AssessmentComponent] SET [Name] = @Name, [RubricId] = @RubricId, [TotalMarks] = @TotalMarks, [DateCreated] = @DateCreated, [DateUpdated] = @DateUpdated, [AssessmentId] = @AssessmentId WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([RubricId] = @Original_RubricId) AND ([TotalMarks] = @Original_TotalMarks) AND ([DateCreated] = @Original_DateCreated) AND ([DateUpdated] = @Original_DateUpdated) AND ([AssessmentId] = @Original_AssessmentId));
-SELECT Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FROM AssessmentComponent WHERE (Id = @Id)";
+select Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FROM AssessmentComponent WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RubricId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RubricId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -940,7 +940,7 @@ SELECT Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FR
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FRO" +
+            this._commandCollection[0].CommandText = "select Id, Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId FRO" +
                 "M dbo.AssessmentComponent";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

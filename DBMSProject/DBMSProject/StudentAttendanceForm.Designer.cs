@@ -137,7 +137,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.67901F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.32099F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.cb_class, 1, 0);
@@ -181,16 +181,16 @@
             // 
             this.cb_class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_class.FormattingEnabled = true;
-            this.cb_class.Location = new System.Drawing.Point(150, 3);
+            this.cb_class.Location = new System.Drawing.Point(149, 3);
             this.cb_class.Name = "cb_class";
-            this.cb_class.Size = new System.Drawing.Size(168, 21);
+            this.cb_class.Size = new System.Drawing.Size(167, 21);
             this.cb_class.TabIndex = 2;
             // 
             // btn_MarkAttendance
             // 
-            this.btn_MarkAttendance.Location = new System.Drawing.Point(150, 74);
+            this.btn_MarkAttendance.Location = new System.Drawing.Point(149, 74);
             this.btn_MarkAttendance.Name = "btn_MarkAttendance";
-            this.btn_MarkAttendance.Size = new System.Drawing.Size(168, 21);
+            this.btn_MarkAttendance.Size = new System.Drawing.Size(167, 21);
             this.btn_MarkAttendance.TabIndex = 5;
             this.btn_MarkAttendance.Text = "Mark Attendance";
             this.btn_MarkAttendance.UseVisualStyleBackColor = true;
@@ -198,7 +198,7 @@
             // 
             // btn_Update
             // 
-            this.btn_Update.Location = new System.Drawing.Point(324, 74);
+            this.btn_Update.Location = new System.Drawing.Point(322, 74);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(207, 21);
             this.btn_Update.TabIndex = 6;
@@ -210,7 +210,7 @@
             // 
             this.btn_ClassFiltter.Location = new System.Drawing.Point(3, 74);
             this.btn_ClassFiltter.Name = "btn_ClassFiltter";
-            this.btn_ClassFiltter.Size = new System.Drawing.Size(141, 21);
+            this.btn_ClassFiltter.Size = new System.Drawing.Size(140, 21);
             this.btn_ClassFiltter.TabIndex = 4;
             this.btn_ClassFiltter.Text = "Filter by Class Date";
             this.btn_ClassFiltter.UseVisualStyleBackColor = true;
@@ -218,10 +218,10 @@
             // 
             // tb_StudentRegisterationNumber
             // 
-            this.tb_StudentRegisterationNumber.Location = new System.Drawing.Point(150, 28);
+            this.tb_StudentRegisterationNumber.Location = new System.Drawing.Point(149, 28);
             this.tb_StudentRegisterationNumber.Name = "tb_StudentRegisterationNumber";
             this.tb_StudentRegisterationNumber.ReadOnly = true;
-            this.tb_StudentRegisterationNumber.Size = new System.Drawing.Size(168, 20);
+            this.tb_StudentRegisterationNumber.Size = new System.Drawing.Size(167, 20);
             this.tb_StudentRegisterationNumber.TabIndex = 7;
             // 
             // label3
@@ -237,16 +237,16 @@
             // 
             this.cb_AttendanceStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_AttendanceStatus.FormattingEnabled = true;
-            this.cb_AttendanceStatus.Location = new System.Drawing.Point(150, 53);
+            this.cb_AttendanceStatus.Location = new System.Drawing.Point(149, 53);
             this.cb_AttendanceStatus.Name = "cb_AttendanceStatus";
-            this.cb_AttendanceStatus.Size = new System.Drawing.Size(168, 21);
+            this.cb_AttendanceStatus.Size = new System.Drawing.Size(167, 21);
             this.cb_AttendanceStatus.TabIndex = 9;
             // 
             // btn_refresh
             // 
-            this.btn_refresh.Location = new System.Drawing.Point(150, 102);
+            this.btn_refresh.Location = new System.Drawing.Point(149, 102);
             this.btn_refresh.Name = "btn_refresh";
-            this.btn_refresh.Size = new System.Drawing.Size(168, 24);
+            this.btn_refresh.Size = new System.Drawing.Size(167, 24);
             this.btn_refresh.TabIndex = 10;
             this.btn_refresh.Text = "Refresh Page";
             this.btn_refresh.UseVisualStyleBackColor = true;

@@ -936,7 +936,7 @@ namespace DBMSProject.ProjectBDataSet1TableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Contact], [Email], [RegistrationNumber], [Status]) VALUES (@FirstName, @LastName, @Contact, @Email, @RegistrationNumber, @Status);
-SELECT Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM Student WHERE (Id = SCOPE_IDENTITY())";
+select Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM Student WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -947,7 +947,7 @@ SELECT Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM 
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Student] SET [FirstName] = @FirstName, [LastName] = @LastName, [Contact] = @Contact, [Email] = @Email, [RegistrationNumber] = @RegistrationNumber, [Status] = @Status WHERE (([Id] = @Original_Id) AND ([FirstName] = @Original_FirstName) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_Contact = 1 AND [Contact] IS NULL) OR ([Contact] = @Original_Contact)) AND ([Email] = @Original_Email) AND ([RegistrationNumber] = @Original_RegistrationNumber) AND ([Status] = @Original_Status));
-SELECT Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM Student WHERE (Id = @Id)";
+select Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM Student WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -980,7 +980,7 @@ SELECT Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM d" +
+            this._commandCollection[0].CommandText = "select Id, FirstName, LastName, Contact, Email, RegistrationNumber, Status FROM d" +
                 "bo.Student";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

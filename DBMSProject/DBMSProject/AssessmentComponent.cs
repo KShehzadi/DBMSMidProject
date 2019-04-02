@@ -67,14 +67,7 @@ namespace DBMSProject
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            foreach (char c in tb_Name.Text)
-            {
-                if (c < 65 || c > 122 || (c < 97 && c > 90))
-                {
-                    MessageBox.Show("Name can only have alphabets!");
-                    return;
-                }
-            }
+           
             foreach (char c in tb_totalmarks.Text)
             {
                 if (c < 48 || c > 57)
@@ -116,7 +109,7 @@ namespace DBMSProject
                     String query = "Update [ProjectB].[dbo].[AssessmentComponent] Set Name = @name, RubricId = @rid,TotalMarks = @tm,DateUpdated = @du,AssessmentId = @asid where id = @index";
                     DataRowView drv = cb_Rubric.SelectedItem as DataRowView;
                     int rubricid = Convert.ToInt32(drv.Row["id"]);
-                    drv = cb_Rubric.SelectedItem as DataRowView;
+                    drv = cb_Assessment.SelectedItem as DataRowView;
                     int assessmentid = Convert.ToInt32(drv.Row["id"]);
                     using (SqlCommand command = new SqlCommand(query, conn))
                     {
