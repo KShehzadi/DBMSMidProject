@@ -1275,7 +1275,7 @@ namespace DBMSProject
             {
 
                 command.Parameters.AddWithValue("@id", asid);
-                command.Parameters.AddWithValue("@sid", asid);
+                command.Parameters.AddWithValue("@sid", Studentid);
                 reader = command.ExecuteReader();
             }
 

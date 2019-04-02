@@ -34,6 +34,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_CLOReports = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.btn_Assessment = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -55,13 +56,14 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cb_Student, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_CLOReports, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btn_Assessment, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 42);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.63736F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.36264F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(275, 100);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.12644F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.87356F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(275, 135);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // cb_Student
@@ -86,12 +88,13 @@
             // 
             // btn_CLOReports
             // 
-            this.btn_CLOReports.Location = new System.Drawing.Point(135, 60);
+            this.btn_CLOReports.Location = new System.Drawing.Point(135, 44);
             this.btn_CLOReports.Name = "btn_CLOReports";
-            this.btn_CLOReports.Size = new System.Drawing.Size(130, 28);
+            this.btn_CLOReports.Size = new System.Drawing.Size(137, 38);
             this.btn_CLOReports.TabIndex = 2;
             this.btn_CLOReports.Text = "Download CLO Report";
             this.btn_CLOReports.UseVisualStyleBackColor = true;
+            this.btn_CLOReports.Click += new System.EventHandler(this.btn_CLOReports_Click);
             // 
             // linkLabel1
             // 
@@ -102,6 +105,16 @@
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Index Page";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // btn_Assessment
+            // 
+            this.btn_Assessment.Location = new System.Drawing.Point(135, 90);
+            this.btn_Assessment.Name = "btn_Assessment";
+            this.btn_Assessment.Size = new System.Drawing.Size(137, 35);
+            this.btn_Assessment.TabIndex = 3;
+            this.btn_Assessment.Text = "Download Assessment Report";
+            this.btn_Assessment.UseVisualStyleBackColor = true;
             // 
             // IndividualStudent_sCLOReports
             // 
@@ -129,5 +142,6 @@
         private System.Windows.Forms.Button btn_CLOReports;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button btn_Assessment;
     }
 }
