@@ -30,5 +30,17 @@ namespace DBMSProject
             i.Show();
             this.Hide(); 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(Connection.GenerateClassAssessmentReport())
+            {
+                MessageBox.Show("Class Assessment Report Created Successfully");
+            }
+            else
+            {
+                MessageBox.Show("Failed :(");
+            }
+        }
     }
 }

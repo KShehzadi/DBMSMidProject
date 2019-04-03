@@ -671,7 +671,7 @@ namespace DBMSProject
             SqlConnection conn = Connection.buildconnection();
             SqlDataReader reader;
 
-            String cmdcheck = "SELECT * FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @id ";
+            String cmdcheck = "SELECT Max(MeasurementLevel) FROM [ProjectB].[dbo].[RubricLevel] Where RubricId = @id ";
             using (SqlCommand command = new SqlCommand(cmdcheck, conn))
             {
 
@@ -692,7 +692,11 @@ namespace DBMSProject
             {
                 while (reader.Read())
                 {
-                    ml = reader.GetInt32(3);
+                    if (!reader.IsDBNull(0))
+                    {
+                        ml = reader.GetInt32(0);
+                    }
+                   
                 }
             }
             
@@ -1748,7 +1752,7 @@ namespace DBMSProject
         }
         public static bool GenerateCloReportbyStudentId(int studentid)
         {
-            //try
+            try
             {
                 SqlConnection conn = Connection.buildconnection();
                 string studentregisterationnumber = Connection.getStudentRegNobyId(studentid);
@@ -1761,7 +1765,7 @@ namespace DBMSProject
 
                 string studentname = Connection.getStudentFirstNamebyId(studentid) + " " + Connection.getStudentLastNamebyId(studentid);
                 Document document = new Document();
-                PdfWriter.GetInstance(document, new FileStream("E:/1A Semesters/6th semester/DBMS Labs/" + studentregisterationnumber + "CloReport.pdf", FileMode.Create));
+                PdfWriter.GetInstance(document, new FileStream("E:/1A Semesters/6th semester/DBMS Labs/Reports/" + studentregisterationnumber + "CloReport.pdf", FileMode.Create));
                 document.Open();
 
 
@@ -1894,15 +1898,15 @@ namespace DBMSProject
                 document.Close();
 
             }
-            //catch
+            catch
             {
-              //  return false;
+                return false;
             }
             return true;
         }
         public static bool GenerateAssessmentReportbyStudentId(int studentid)
         {
-            //try
+            try
             {
                 SqlConnection conn = Connection.buildconnection();
                 string studentregisterationnumber = Connection.getStudentRegNobyId(studentid);
@@ -1915,7 +1919,7 @@ namespace DBMSProject
 
                 string studentname = Connection.getStudentFirstNamebyId(studentid) + " " + Connection.getStudentLastNamebyId(studentid);
                 Document document = new Document();
-                PdfWriter.GetInstance(document, new FileStream("E:/1A Semesters/6th semester/DBMS Labs/" + studentregisterationnumber + "AssessmentReport.pdf", FileMode.Create));
+                PdfWriter.GetInstance(document, new FileStream("E:/1A Semesters/6th semester/DBMS Labs/Reports/" + studentregisterationnumber + "AssessmentReport.pdf", FileMode.Create));
                 document.Open();
 
 
@@ -2016,7 +2020,15 @@ namespace DBMSProject
                             int componentmarks = Connection.getAssessmentComponentTotalMarksbyid(assessmentcomponentid);
                             int studentrubriclevel = Connection.getMeasurementLevelbyRubricLevelId(Connection.getRubricMeasurementIdbyAssessmentComponentIdAndStudentIdFromStudentResult(studentid, assessmentcomponentid));
                             int maxrubriclevel = Connection.getMaximumRubricLevelbyRubricId(RubricId);
-                            float obtainedmarks = (float)((((float)studentrubriclevel) / ((float)maxrubriclevel)) * ((float)componentmarks));
+                            float obtainedmarks = -1;
+                            if (studentrubriclevel == -1 || maxrubriclevel == -1)
+                            {
+
+                            }
+                            else
+                            {
+                                obtainedmarks = (float)((((float)studentrubriclevel) / ((float)maxrubriclevel)) * ((float)componentmarks));
+                            }
                             p = new Paragraph(new Chunk(Assessmentname, contentfont));
                             Report.AddCell(p);
                             p = new Paragraph(new Chunk(assessmentcomponentname, contentfont));
@@ -2027,7 +2039,14 @@ namespace DBMSProject
                             Report.AddCell(p);
                             p = new Paragraph(new Chunk(studentrubriclevel.ToString(), contentfont));
                             Report.AddCell(p);
-                            p = new Paragraph(new Chunk(obtainedmarks.ToString(), contentfont));
+                            if (obtainedmarks == -1)
+                            {
+                                p = new Paragraph(new Chunk("Nil", contentfont));
+                            }
+                            else
+                            {
+                                p = new Paragraph(new Chunk(obtainedmarks.ToString(), contentfont));
+                            }
                             Report.AddCell(p);
                         }
 
@@ -2041,12 +2060,151 @@ namespace DBMSProject
                 document.Close();
 
             }
+            catch
+            {
+              return false;
+            }
+            return true;
+        }
+        public static bool GenerateClassAssessmentReport()
+        {
+            //try
+            {
+                SqlConnection conn = Connection.buildconnection();
+                string queryStudent = "SELECT Id, RegistrationNumber FROM Student ";
+                SqlCommand CommandStudent = new SqlCommand(queryStudent, conn);
+                SqlDataReader readerStudent = CommandStudent.ExecuteReader();
+                DataTable datatableStudent = new DataTable();
+                datatableStudent.Load(readerStudent);
+
+
+                conn = Connection.buildconnection();
+               
+                string queryAssessment = "SELECT Id, Title FROM Assessment ";
+                SqlCommand CommandAssessment = new SqlCommand(queryAssessment, conn);
+                SqlDataReader readerAssessment = CommandAssessment.ExecuteReader();
+                DataTable datatableAssessment = new DataTable();
+
+                
+                Document document = new Document();
+                PdfWriter.GetInstance(document, new FileStream("E:/1A Semesters/6th semester/DBMS Labs/Reports/ClassAssessmentReport.pdf", FileMode.Create));
+                document.Open();
+
+
+
+                BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                iTextSharp.text.Font font = new iTextSharp.text.Font(bf, 12, iTextSharp.text.Font.BOLD);
+                iTextSharp.text.Font contentfont = new iTextSharp.text.Font(bf, 12, iTextSharp.text.Font.NORMAL);
+                iTextSharp.text.Font headingfont = new iTextSharp.text.Font(bf, 20, iTextSharp.text.Font.BOLD);
+
+                Paragraph p = new Paragraph(new Chunk("Assessment Report \n", headingfont));
+                p.Alignment = Element.ALIGN_CENTER;
+                document.Add(p);
+                p = new Paragraph(new Chunk("\n", headingfont));
+                p.Alignment = Element.ALIGN_CENTER;
+                document.Add(p);
+                datatableAssessment.Load(readerAssessment);
+                PdfPTable Report = new PdfPTable(datatableAssessment.Rows.Count+1);
+                p = new Paragraph(new Chunk("Student Registration Number", font));
+                Report.AddCell(p);
+
+                Paragraph p1 = new Paragraph(new Chunk("", font));
+                for (int asid = 0; asid < datatableAssessment.Rows.Count; asid++)
+                {
+                    string assessment = Connection.getAssessmentNamebyId(Convert.ToInt32(datatableAssessment.Rows[asid].ItemArray[0]));
+                    p1 = new Paragraph(new Chunk(assessment, font));
+                    Report.AddCell(p1);
+                }
+                for (int students = 0; students< datatableStudent.Rows.Count; students++ )
+                {
+                    int studentid = Convert.ToInt32(datatableStudent.Rows[students].ItemArray[0]);
+                    string studentregisterationnumber = Connection.getStudentRegNobyId(studentid);
+                    string studentEmail = Connection.getStudentEmailbyId(studentid);
+                    string studentContact = Connection.getStudentContactbyId(studentid);
+                    int AssessmentId;
+                    int RubricId;
+                    int assessmentcomponentid;
+
+                    p1 = new Paragraph(new Chunk(studentregisterationnumber, font));
+                    Report.AddCell(p1);
+
+                    for (int i = 0; i < datatableAssessment.Rows.Count; i++)
+                    {
+                        AssessmentId = Convert.ToInt32(datatableAssessment.Rows[i].ItemArray[0]);
+                        conn = Connection.buildconnection();
+                        string queryAssessmentComponent = "SELECT Id, Name, RubricId FROM AssessmentComponent WHERE AssessmentId = @assessmentid";
+                        SqlCommand CommandAssessmentComponent = new SqlCommand(queryAssessmentComponent, conn);
+                        CommandAssessmentComponent.Parameters.AddWithValue("@assessmentid", AssessmentId);
+                        SqlDataReader readerAssessmentComponent = CommandAssessmentComponent.ExecuteReader();
+                        DataTable datatableAssessmentComponent = new DataTable();
+                        datatableAssessmentComponent.Load(readerAssessmentComponent);
+                        string Assessmentname = Connection.getAssessmentNamebyId(AssessmentId);
+                        if (datatableAssessmentComponent.Rows.Count == 0)
+                        {
+                            p = new Paragraph(new Chunk("Nil", contentfont));
+                            Report.AddCell(p);
+                          
+                        }
+                        float totalcomponentmarks = 0;
+                        float totalstudentmarks = 0;
+                        for (int j = 0; j < datatableAssessmentComponent.Rows.Count; j++)
+                        {
+                            assessmentcomponentid = Convert.ToInt32(datatableAssessmentComponent.Rows[j].ItemArray[0]);
+                            string assessmentcomponentname = Connection.getAssessmentComponentNamebyId(assessmentcomponentid);
+                            RubricId = Convert.ToInt32(datatableAssessmentComponent.Rows[j].ItemArray[2]);
+                            conn = Connection.buildconnection();
+                            string querystudentassessment = "SELECT RubricMeasurementId FROM StudentResult WHERE AssessmentComponentId = @rid AND StudentId = @sid";
+                            SqlCommand Commandstudentassessment = new SqlCommand(querystudentassessment, conn);
+                            Commandstudentassessment.Parameters.AddWithValue("@rid", assessmentcomponentid);
+                            Commandstudentassessment.Parameters.AddWithValue("@sid", studentid);
+                            SqlDataReader readerstudentassessment = Commandstudentassessment.ExecuteReader();
+                            DataTable datatablestudentassessment = new DataTable();
+                            datatablestudentassessment.Load(readerstudentassessment);
+                            string Rubricname = Connection.getRubricDetailsbyId(RubricId);
+                           
+                            
+                            for (int k = 0; k < datatablestudentassessment.Rows.Count; k++)
+                            {
+
+                                int componentmarks = Connection.getAssessmentComponentTotalMarksbyid(assessmentcomponentid);
+                                totalcomponentmarks = (float)totalcomponentmarks + (float)componentmarks;
+                                int studentassignedrubriclevelid = Connection.getRubricMeasurementIdbyAssessmentComponentIdAndStudentIdFromStudentResult(studentid, assessmentcomponentid);
+                                int studentrubriclevel = Connection.getMeasurementLevelbyRubricLevelId(studentassignedrubriclevelid);
+                                int maxrubriclevel = Connection.getMaximumRubricLevelbyRubricId(RubricId);
+                                float obtainedmarks = -1;
+                                if (studentrubriclevel == -1 || maxrubriclevel == -1)
+                                {
+                                    totalstudentmarks = totalstudentmarks + 0;
+                                }
+                                else
+                                {
+                                    obtainedmarks = (float)((((float)studentrubriclevel) / ((float)maxrubriclevel)) * ((float)componentmarks));
+                                    totalstudentmarks = totalstudentmarks + obtainedmarks;
+                                }
+                            }
+                           
+                        }
+                        float percentage = (totalstudentmarks / totalcomponentmarks) * 100;
+                        if (datatableAssessmentComponent.Rows.Count > 0)
+                        {
+                            p1 = new Paragraph(new Chunk((percentage.ToString()) +"%", font));
+                            Report.AddCell(p1);
+                        }
+                       
+                    }
+                }
+                Report.HorizontalAlignment = 12;
+                document.Add(Report);
+                document.Close();
+
+            }
             //catch
             {
               //  return false;
             }
             return true;
         }
+
         public static bool DeleteRubricLevelById(int i)
         {
             SqlConnection conn = Connection.buildconnection();
