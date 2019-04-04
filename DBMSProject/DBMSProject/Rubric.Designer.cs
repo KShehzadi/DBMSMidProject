@@ -79,18 +79,20 @@
             // 
             this.btn_rubric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_rubric.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_rubric.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_rubric.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_rubric.Location = new System.Drawing.Point(184, 218);
             this.btn_rubric.Name = "btn_rubric";
             this.btn_rubric.Size = new System.Drawing.Size(250, 32);
             this.btn_rubric.TabIndex = 1;
             this.btn_rubric.Text = "Add Rubric";
-            this.btn_rubric.UseVisualStyleBackColor = true;
+            this.btn_rubric.UseVisualStyleBackColor = false;
             this.btn_rubric.Click += new System.EventHandler(this.btn_rubric_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(184, 26);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(250, 20);
@@ -99,9 +101,9 @@
             // 
             // cb_clo
             // 
-            this.cb_clo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_clo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_clo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_clo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cb_clo.FormattingEnabled = true;
             this.cb_clo.Location = new System.Drawing.Point(184, 3);
             this.cb_clo.Name = "cb_clo";
@@ -113,18 +115,18 @@
             this.label.AutoSize = true;
             this.label.Location = new System.Drawing.Point(3, 0);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(59, 13);
+            this.label.Size = new System.Drawing.Size(61, 13);
             this.label.TabIndex = 4;
-            this.label.Text = "select CLO";
+            this.label.Text = "Select CLO";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "No. of Rubrics";
+            this.label2.Text = "Number of Rubrics";
             // 
             // dataGridView1
             // 
@@ -143,7 +145,7 @@
             this.dataGridView1.DataSource = this.rubricBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(541, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(567, 240);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -207,18 +209,23 @@
             // btn_fetch
             // 
             this.btn_fetch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_fetch.Location = new System.Drawing.Point(469, 245);
+            this.btn_fetch.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_fetch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_fetch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_fetch.Location = new System.Drawing.Point(495, 249);
             this.btn_fetch.Name = "btn_fetch";
             this.btn_fetch.Size = new System.Drawing.Size(75, 21);
             this.btn_fetch.TabIndex = 8;
             this.btn_fetch.Text = "Fetch";
-            this.btn_fetch.UseVisualStyleBackColor = true;
+            this.btn_fetch.UseVisualStyleBackColor = false;
             // 
             // linkLabel1
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(483, 269);
+            this.linkLabel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Location = new System.Drawing.Point(509, 274);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(61, 13);
             this.linkLabel1.TabIndex = 9;
@@ -267,6 +274,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.MinimumSize = new System.Drawing.Size(281, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(281, 26);
             this.label5.TabIndex = 13;
@@ -316,9 +324,9 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(547, 282);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(573, 293);
             this.tableLayoutPanel2.TabIndex = 15;
             // 
             // tableLayoutPanel3

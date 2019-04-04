@@ -117,66 +117,71 @@
             // tb_FirstName
             // 
             this.tb_FirstName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_FirstName.Location = new System.Drawing.Point(124, 0);
+            this.tb_FirstName.Location = new System.Drawing.Point(123, 0);
             this.tb_FirstName.Margin = new System.Windows.Forms.Padding(0);
             this.tb_FirstName.Name = "tb_FirstName";
-            this.tb_FirstName.Size = new System.Drawing.Size(551, 20);
+            this.tb_FirstName.Size = new System.Drawing.Size(548, 20);
             this.tb_FirstName.TabIndex = 5;
             this.tb_FirstName.TextChanged += new System.EventHandler(this.tb_FirstName_TextChanged);
             // 
             // tb_LastName
             // 
             this.tb_LastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_LastName.Location = new System.Drawing.Point(124, 20);
+            this.tb_LastName.Location = new System.Drawing.Point(123, 20);
             this.tb_LastName.Margin = new System.Windows.Forms.Padding(0);
             this.tb_LastName.Name = "tb_LastName";
-            this.tb_LastName.Size = new System.Drawing.Size(551, 20);
+            this.tb_LastName.Size = new System.Drawing.Size(548, 20);
             this.tb_LastName.TabIndex = 6;
             this.tb_LastName.TextChanged += new System.EventHandler(this.tb_LastName_TextChanged);
             // 
             // tb_Contact
             // 
             this.tb_Contact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Contact.Location = new System.Drawing.Point(124, 40);
+            this.tb_Contact.Location = new System.Drawing.Point(123, 40);
             this.tb_Contact.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Contact.Name = "tb_Contact";
-            this.tb_Contact.Size = new System.Drawing.Size(551, 20);
+            this.tb_Contact.Size = new System.Drawing.Size(548, 20);
             this.tb_Contact.TabIndex = 7;
             this.tb_Contact.TextChanged += new System.EventHandler(this.tb_Contact_TextChanged);
             // 
             // tb_Email
             // 
             this.tb_Email.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Email.Location = new System.Drawing.Point(124, 60);
+            this.tb_Email.Location = new System.Drawing.Point(123, 60);
             this.tb_Email.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Email.Name = "tb_Email";
-            this.tb_Email.Size = new System.Drawing.Size(551, 20);
+            this.tb_Email.Size = new System.Drawing.Size(548, 20);
             this.tb_Email.TabIndex = 8;
             // 
             // tb_RegNo
             // 
             this.tb_RegNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_RegNo.Location = new System.Drawing.Point(124, 80);
+            this.tb_RegNo.Location = new System.Drawing.Point(123, 80);
             this.tb_RegNo.Margin = new System.Windows.Forms.Padding(0);
             this.tb_RegNo.Name = "tb_RegNo";
-            this.tb_RegNo.Size = new System.Drawing.Size(551, 20);
+            this.tb_RegNo.Size = new System.Drawing.Size(548, 20);
             this.tb_RegNo.TabIndex = 9;
             // 
             // btn_insert
             // 
-            this.btn_insert.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_insert.Location = new System.Drawing.Point(127, 132);
+            this.btn_insert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_insert.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_insert.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_insert.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_insert.Location = new System.Drawing.Point(126, 127);
             this.btn_insert.Name = "btn_insert";
-            this.btn_insert.Size = new System.Drawing.Size(545, 23);
+            this.btn_insert.Size = new System.Drawing.Size(542, 23);
             this.btn_insert.TabIndex = 10;
             this.btn_insert.Text = "Insert Student";
-            this.btn_insert.UseVisualStyleBackColor = true;
+            this.btn_insert.UseVisualStyleBackColor = false;
             this.btn_insert.Click += new System.EventHandler(this.btn_insert_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
             this.linkLabel1.Location = new System.Drawing.Point(888, 261);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(61, 21);
@@ -201,6 +206,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -294,13 +300,16 @@
             // 
             // btn_Fetch
             // 
+            this.btn_Fetch.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_Fetch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_Fetch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Fetch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_Fetch.Location = new System.Drawing.Point(874, 235);
             this.btn_Fetch.Name = "btn_Fetch";
             this.btn_Fetch.Size = new System.Drawing.Size(75, 23);
             this.btn_Fetch.TabIndex = 15;
             this.btn_Fetch.Text = "Fetch Data";
-            this.btn_Fetch.UseVisualStyleBackColor = true;
+            this.btn_Fetch.UseVisualStyleBackColor = false;
             this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
             // 
             // studentTableAdapter
@@ -311,23 +320,23 @@
             // 
             this.cb_status.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_status.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cb_status.FormattingEnabled = true;
-            this.cb_status.Location = new System.Drawing.Point(124, 100);
+            this.cb_status.Location = new System.Drawing.Point(123, 100);
             this.cb_status.Margin = new System.Windows.Forms.Padding(0);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(551, 21);
+            this.cb_status.Size = new System.Drawing.Size(548, 21);
             this.cb_status.TabIndex = 16;
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Location = new System.Drawing.Point(9, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(300, 26);
+            this.label7.Size = new System.Drawing.Size(287, 26);
             this.label7.TabIndex = 17;
             this.label7.Text = "Student Management Page";
             // 
@@ -339,7 +348,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.4435F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.5565F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tb_FirstName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cb_status, 1, 5);
@@ -389,6 +398,8 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));

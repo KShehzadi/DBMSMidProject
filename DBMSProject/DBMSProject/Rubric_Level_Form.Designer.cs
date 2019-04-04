@@ -50,9 +50,9 @@
             this.rubricLevelTableAdapter = new DBMSProject.ProjectBDataSet7TableAdapters.RubricLevelTableAdapter();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_filter = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_filter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rubricLevelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet7)).BeginInit();
@@ -84,6 +84,7 @@
             this.cb_rubric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_rubric.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_rubric.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cb_rubric.FormattingEnabled = true;
             this.cb_rubric.Location = new System.Drawing.Point(192, 3);
             this.cb_rubric.Name = "cb_rubric";
@@ -127,12 +128,15 @@
             // 
             this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Add.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_Add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Add.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_Add.Location = new System.Drawing.Point(192, 100);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(183, 23);
             this.btn_Add.TabIndex = 6;
             this.btn_Add.Text = "Add Level";
-            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.UseVisualStyleBackColor = false;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // dataGridView1
@@ -142,6 +146,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -211,18 +217,24 @@
             // btn_Fetch
             // 
             this.btn_Fetch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Fetch.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_Fetch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Fetch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_Fetch.Location = new System.Drawing.Point(540, 157);
             this.btn_Fetch.Name = "btn_Fetch";
             this.btn_Fetch.Size = new System.Drawing.Size(75, 20);
             this.btn_Fetch.TabIndex = 8;
             this.btn_Fetch.Text = "Fetch";
-            this.btn_Fetch.UseVisualStyleBackColor = true;
+            this.btn_Fetch.UseVisualStyleBackColor = false;
             this.btn_Fetch.Click += new System.EventHandler(this.btn_Fetch_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.linkLabel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
             this.linkLabel1.Location = new System.Drawing.Point(554, 180);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(61, 13);
@@ -237,11 +249,11 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 0);
+            this.label4.Location = new System.Drawing.Point(5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(342, 26);
             this.label4.TabIndex = 10;
@@ -272,6 +284,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(378, 133);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
+            // btn_filter
+            // 
+            this.btn_filter.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_filter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_filter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_filter.Location = new System.Drawing.Point(3, 100);
+            this.btn_filter.Name = "btn_filter";
+            this.btn_filter.Size = new System.Drawing.Size(169, 23);
+            this.btn_filter.TabIndex = 7;
+            this.btn_filter.Text = "Filter by Rubric";
+            this.btn_filter.UseVisualStyleBackColor = false;
+            this.btn_filter.Click += new System.EventHandler(this.btn_filter_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -294,7 +319,8 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -305,16 +331,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(352, 37);
             this.tableLayoutPanel3.TabIndex = 13;
-            // 
-            // btn_filter
-            // 
-            this.btn_filter.Location = new System.Drawing.Point(3, 100);
-            this.btn_filter.Name = "btn_filter";
-            this.btn_filter.Size = new System.Drawing.Size(169, 23);
-            this.btn_filter.TabIndex = 7;
-            this.btn_filter.Text = "Filter by Rubric";
-            this.btn_filter.UseVisualStyleBackColor = true;
-            this.btn_filter.Click += new System.EventHandler(this.btn_filter_Click);
             // 
             // Rubric_Level_Form
             // 
@@ -327,7 +343,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
-            this.MaximumSize = new System.Drawing.Size(658, 440);
+            this.MinimumSize = new System.Drawing.Size(658, 440);
             this.Name = "Rubric_Level_Form";
             this.Text = "Rubric_Level_Form";
             this.Load += new System.EventHandler(this.Rubric_Level_Form_Load);

@@ -91,7 +91,11 @@ namespace DBMSProject
 
         private void btn_GetStudent_Click(object sender, EventArgs e)
         {
-
+            if(cb_Assessment.Text == "" || cb_AssessmentComponent.Text == ""|| cb_Date.Text == "" || cb_rubriclevel.Text =="")
+            {
+                MessageBox.Show("Warning: Empty Fields!");
+                return;
+            }
 
             this.dataGridView1.Columns[1].Visible = true;
 
@@ -248,6 +252,12 @@ namespace DBMSProject
 
         private void btn_filter_Click(object sender, EventArgs e)
         {
+
+            if (cb_Assessment.Text == "" || cb_AssessmentComponent.Text == "" )
+            {
+                MessageBox.Show("Warning: Empty Fields!");
+                return;
+            }
             this.dataGridView1.Columns[2].Visible = true;
             this.dataGridView1.Columns[3].Visible = true;
             this.dataGridView1.Columns[4].Visible = true;
@@ -368,6 +378,12 @@ namespace DBMSProject
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
+
+            if (cb_rubriclevel.Text == "")
+            {
+                MessageBox.Show("Warning: Empty Fields!");
+                return;
+            }
             DataRowView drvrubricid = cb_rubriclevel.SelectedItem as DataRowView;
             int newmeasurementlevel = Convert.ToInt32(drvrubricid.Row["Id"]);
 

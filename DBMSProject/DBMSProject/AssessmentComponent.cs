@@ -46,13 +46,7 @@ namespace DBMSProject
 
 
 
-            query = "select id, Details from [ProjectB].[dbo].[Rubric]";
-            da = new SqlDataAdapter(query, conn);
-            ds = new DataSet();
-            da.Fill(ds, "rubric");
-            cb_Rubric.DisplayMember = "Details";
-            cb_Rubric.ValueMember = "id";
-            cb_Rubric.DataSource = ds.Tables["rubric"];
+           
 
 
 
@@ -67,7 +61,11 @@ namespace DBMSProject
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-           
+            if(cb_Rubric.Text == "" || cb_Assessment.Text == "" || tb_Name.Text == "" || tb_totalmarks.Text == "")
+            {
+                MessageBox.Show("Warning: Empty Fields!");
+                return;
+            }
             foreach (char c in tb_totalmarks.Text)
             {
                 if (c < 48 || c > 57)
@@ -213,6 +211,21 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+        }
+
+        private void cb_Assessment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRowView drv = cb_Assessment.SelectedItem as DataRowView;
+            int assessmentid = Convert.ToInt32(drv.Row["id"]);
+            SqlConnection conn = Connection.buildconnection();
+            string query = "SELECT Id, Details from [ProjectB].[dbo].[Rubric]";
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+         
+            DataSet ds = new DataSet();
+            da.Fill(ds, "rubric");
+            cb_Rubric.DisplayMember = "Details";
+            cb_Rubric.ValueMember = "id";
+            cb_Rubric.DataSource = ds.Tables["rubric"];
         }
     }
 }

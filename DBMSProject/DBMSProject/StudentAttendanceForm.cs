@@ -123,9 +123,18 @@ namespace DBMSProject
 
         private void btn_ClassFiltter_Click(object sender, EventArgs e)
         {
+            btn_MarkAttendance.Hide();
             dataGridView1.DataSource = null;
             DataRowView drv = cb_class.SelectedItem as DataRowView;
             int classid = Convert.ToInt32(drv.Row["Id"]);
+            label2.Hide();
+            label3.Hide();
+            cb_AttendanceStatus.Hide();
+            tb_StudentRegisterationNumber.Hide();
+            label1.Show();
+            cb_class.Show();
+            btn_Update.Hide();
+            btn_ClassFiltter.Show();
             dataGridView1.Columns[2].Visible = true;
             dataGridView1.Columns[3].Visible = true;
             dataGridView1.Columns[4].Visible = true;
@@ -236,8 +245,8 @@ namespace DBMSProject
                 cb_AttendanceStatus.SelectedValue = Convert.ToInt32(dataGridView1[0, e.RowIndex].Value);
                 btn_ClassFiltter.Hide();
                 btn_MarkAttendance.Hide();
-
-
+                btn_Update_Click(sender, e);
+               
             }
             else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                e.RowIndex >= 0 && senderGrid.Columns[e.ColumnIndex].HeaderText == "Delete")
@@ -273,9 +282,10 @@ namespace DBMSProject
             {
                 MessageBox.Show("Cannot Update !");
             }
+
             btn_ClassFiltter_Click(sender, e);
-            
-            
+
+
         }
     }
 }

@@ -42,5 +42,17 @@ namespace DBMSProject
                 MessageBox.Show("Failed :(");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(Connection.GenerateClassCloReport())
+            {
+                MessageBox.Show("Class CLO Report Succefully Created! :D");
+            }
+            else
+            {
+                MessageBox.Show("Failed :(");
+            }
+        }
     }
 }

@@ -63,6 +63,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -74,7 +76,7 @@
             this.dataGridView1.DataSource = this.cloBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(594, 101);
+            this.dataGridView1.Size = new System.Drawing.Size(594, 105);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -134,32 +136,40 @@
             // 
             this.btn_clo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_clo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_clo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_clo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_clo.Location = new System.Drawing.Point(70, 39);
             this.btn_clo.Name = "btn_clo";
             this.btn_clo.Size = new System.Drawing.Size(257, 23);
             this.btn_clo.TabIndex = 1;
             this.btn_clo.Text = "Add CLO";
-            this.btn_clo.UseVisualStyleBackColor = true;
+            this.btn_clo.UseVisualStyleBackColor = false;
             this.btn_clo.Click += new System.EventHandler(this.btn_clo_Click);
             // 
             // btn_fetch
             // 
             this.btn_fetch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_fetch.Location = new System.Drawing.Point(522, 110);
+            this.btn_fetch.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_fetch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_fetch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_fetch.Location = new System.Drawing.Point(522, 114);
             this.btn_fetch.Name = "btn_fetch";
             this.btn_fetch.Size = new System.Drawing.Size(75, 22);
             this.btn_fetch.TabIndex = 2;
             this.btn_fetch.Text = "Fetch";
-            this.btn_fetch.UseVisualStyleBackColor = true;
+            this.btn_fetch.UseVisualStyleBackColor = false;
             this.btn_fetch.Click += new System.EventHandler(this.btn_fetch_Click);
             // 
             // lbl_index
             // 
             this.lbl_index.AutoSize = true;
+            this.lbl_index.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_index.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbl_index.Location = new System.Drawing.Point(536, 135);
+            this.lbl_index.LinkColor = System.Drawing.Color.White;
+            this.lbl_index.Location = new System.Drawing.Point(536, 139);
             this.lbl_index.Name = "lbl_index";
-            this.lbl_index.Size = new System.Drawing.Size(61, 21);
+            this.lbl_index.Size = new System.Drawing.Size(61, 17);
             this.lbl_index.TabIndex = 3;
             this.lbl_index.TabStop = true;
             this.lbl_index.Text = "Index Page";
@@ -249,7 +259,7 @@
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.38931F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.61069F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(600, 156);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
