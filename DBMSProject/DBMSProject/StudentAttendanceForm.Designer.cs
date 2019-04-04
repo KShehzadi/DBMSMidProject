@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Attendance_Status = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.RegisterationNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Update_Status = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,18 +51,12 @@
             this.btn_refresh = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
-            this.Attendance_Status = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.RegisterationNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update_Status = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -81,6 +81,39 @@
             this.dataGridView1.Size = new System.Drawing.Size(634, 162);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Attendance_Status
+            // 
+            this.Attendance_Status.DataPropertyName = "Attendance_Status";
+            this.Attendance_Status.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Attendance_Status.HeaderText = "Attendance_Status";
+            this.Attendance_Status.Name = "Attendance_Status";
+            // 
+            // RegisterationNumber
+            // 
+            this.RegisterationNumber.HeaderText = "RegisterationNumber";
+            this.RegisterationNumber.Name = "RegisterationNumber";
+            this.RegisterationNumber.ReadOnly = true;
+            // 
+            // AttendanceDate
+            // 
+            this.AttendanceDate.HeaderText = "AttendanceDate";
+            this.AttendanceDate.Name = "AttendanceDate";
+            this.AttendanceDate.ReadOnly = true;
+            // 
+            // Update_Status
+            // 
+            this.Update_Status.HeaderText = "Update_Status";
+            this.Update_Status.Name = "Update_Status";
+            this.Update_Status.Text = "Update_Status";
+            this.Update_Status.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // tableLayoutPanel1
             // 
@@ -120,7 +153,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.67901F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.32099F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.cb_class, 1, 0);
@@ -168,7 +201,7 @@
             this.cb_class.FormattingEnabled = true;
             this.cb_class.Location = new System.Drawing.Point(145, 3);
             this.cb_class.Name = "cb_class";
-            this.cb_class.Size = new System.Drawing.Size(164, 21);
+            this.cb_class.Size = new System.Drawing.Size(163, 21);
             this.cb_class.TabIndex = 2;
             // 
             // btn_MarkAttendance
@@ -179,7 +212,7 @@
             this.btn_MarkAttendance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_MarkAttendance.Location = new System.Drawing.Point(145, 74);
             this.btn_MarkAttendance.Name = "btn_MarkAttendance";
-            this.btn_MarkAttendance.Size = new System.Drawing.Size(164, 21);
+            this.btn_MarkAttendance.Size = new System.Drawing.Size(163, 21);
             this.btn_MarkAttendance.TabIndex = 5;
             this.btn_MarkAttendance.Text = "Mark Attendance";
             this.btn_MarkAttendance.UseVisualStyleBackColor = false;
@@ -191,7 +224,7 @@
             this.btn_Update.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_Update.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Update.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Update.Location = new System.Drawing.Point(321, 74);
+            this.btn_Update.Location = new System.Drawing.Point(320, 74);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(207, 21);
             this.btn_Update.TabIndex = 6;
@@ -218,7 +251,7 @@
             this.tb_StudentRegisterationNumber.Location = new System.Drawing.Point(145, 28);
             this.tb_StudentRegisterationNumber.Name = "tb_StudentRegisterationNumber";
             this.tb_StudentRegisterationNumber.ReadOnly = true;
-            this.tb_StudentRegisterationNumber.Size = new System.Drawing.Size(164, 20);
+            this.tb_StudentRegisterationNumber.Size = new System.Drawing.Size(163, 20);
             this.tb_StudentRegisterationNumber.TabIndex = 7;
             // 
             // label3
@@ -238,7 +271,7 @@
             this.cb_AttendanceStatus.FormattingEnabled = true;
             this.cb_AttendanceStatus.Location = new System.Drawing.Point(145, 53);
             this.cb_AttendanceStatus.Name = "cb_AttendanceStatus";
-            this.cb_AttendanceStatus.Size = new System.Drawing.Size(164, 21);
+            this.cb_AttendanceStatus.Size = new System.Drawing.Size(163, 21);
             this.cb_AttendanceStatus.TabIndex = 9;
             // 
             // btn_refresh
@@ -249,7 +282,7 @@
             this.btn_refresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_refresh.Location = new System.Drawing.Point(145, 102);
             this.btn_refresh.Name = "btn_refresh";
-            this.btn_refresh.Size = new System.Drawing.Size(164, 24);
+            this.btn_refresh.Size = new System.Drawing.Size(163, 24);
             this.btn_refresh.TabIndex = 10;
             this.btn_refresh.Text = "Refresh Page";
             this.btn_refresh.UseVisualStyleBackColor = false;
@@ -281,39 +314,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Student Attendance Management Page";
             // 
-            // Attendance_Status
-            // 
-            this.Attendance_Status.DataPropertyName = "Attendance_Status";
-            this.Attendance_Status.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Attendance_Status.HeaderText = "Attendance_Status";
-            this.Attendance_Status.Name = "Attendance_Status";
-            // 
-            // RegisterationNumber
-            // 
-            this.RegisterationNumber.HeaderText = "RegisterationNumber";
-            this.RegisterationNumber.Name = "RegisterationNumber";
-            this.RegisterationNumber.ReadOnly = true;
-            // 
-            // AttendanceDate
-            // 
-            this.AttendanceDate.HeaderText = "AttendanceDate";
-            this.AttendanceDate.Name = "AttendanceDate";
-            this.AttendanceDate.ReadOnly = true;
-            // 
-            // Update_Status
-            // 
-            this.Update_Status.HeaderText = "Update_Status";
-            this.Update_Status.Name = "Update_Status";
-            this.Update_Status.Text = "Update_Status";
-            this.Update_Status.UseColumnTextForButtonValue = true;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
-            // 
             // flowLayoutPanel8
             // 
             this.flowLayoutPanel8.BackgroundImage = global::DBMSProject.Properties.Resources.images__7_1;
@@ -338,13 +338,13 @@
             this.Text = "StudentAttendanceForm";
             this.Load += new System.EventHandler(this.StudentAttendanceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

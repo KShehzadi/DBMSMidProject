@@ -37,6 +37,11 @@ namespace DBMSProject
             cb_status.DisplayMember = "Name";
             cb_status.ValueMember = "Lookupid";
             cb_status.DataSource = ds.Tables["lookup"];
+
+            for(int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[7, i].Value = Connection.getLookupNamebyId(Convert.ToInt32(dataGridView1[6, i].Value));
+            }
         }
 
         public static void Delete_Student(int i)
@@ -437,6 +442,11 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[4, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[1, i].Value));
+            }
+
         }
         public static void insertorupdaterubriclevel(ref TextBox tb_measurement, ref TextBox tb_details,ref int index, ref DataGridView dataGridView1, ref ComboBox cb_rubric, ref Button btn_Add)
         {
@@ -558,7 +568,10 @@ namespace DBMSProject
             tb_details.Clear();
             tb_measurement.Clear();
 
-
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[4, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[1, i].Value));
+            }
             btn_Add.Text = "Add Level";
         }
     public static SqlConnection buildconnection()

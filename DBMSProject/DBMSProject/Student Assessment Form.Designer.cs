@@ -31,9 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_filter = new System.Windows.Forms.Button();
             this.btn_Update = new System.Windows.Forms.Button();
-            this.btn_MarkAssessment = new System.Windows.Forms.Button();
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.btn_GetStudent = new System.Windows.Forms.Button();
             this.cb_Date = new System.Windows.Forms.ComboBox();
@@ -43,6 +41,8 @@
             this.cb_rubriclevel = new System.Windows.Forms.ComboBox();
             this.cb_Assessment = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_filter = new System.Windows.Forms.Button();
+            this.btn_MarkAssessment = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -107,21 +107,6 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Select Rubric";
             // 
-            // btn_filter
-            // 
-            this.btn_filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_filter.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_filter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_filter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_filter.Location = new System.Drawing.Point(258, 116);
-            this.btn_filter.Name = "btn_filter";
-            this.btn_filter.Size = new System.Drawing.Size(249, 21);
-            this.btn_filter.TabIndex = 8;
-            this.btn_filter.Text = "Filter Student by Assessment Component";
-            this.btn_filter.UseVisualStyleBackColor = false;
-            this.btn_filter.Click += new System.EventHandler(this.btn_filter_Click);
-            // 
             // btn_Update
             // 
             this.btn_Update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -136,21 +121,6 @@
             this.btn_Update.Text = "Update";
             this.btn_Update.UseVisualStyleBackColor = false;
             this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
-            // 
-            // btn_MarkAssessment
-            // 
-            this.btn_MarkAssessment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_MarkAssessment.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_MarkAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_MarkAssessment.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_MarkAssessment.Location = new System.Drawing.Point(513, 148);
-            this.btn_MarkAssessment.Name = "btn_MarkAssessment";
-            this.btn_MarkAssessment.Size = new System.Drawing.Size(182, 21);
-            this.btn_MarkAssessment.TabIndex = 5;
-            this.btn_MarkAssessment.Text = "Mark Assessment of All Students";
-            this.btn_MarkAssessment.UseVisualStyleBackColor = false;
-            this.btn_MarkAssessment.Click += new System.EventHandler(this.btn_MarkAssessment_Click);
             // 
             // btn_Refresh
             // 
@@ -255,6 +225,36 @@
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Assessment:";
+            // 
+            // btn_filter
+            // 
+            this.btn_filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_filter.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_filter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_filter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_filter.Location = new System.Drawing.Point(258, 116);
+            this.btn_filter.Name = "btn_filter";
+            this.btn_filter.Size = new System.Drawing.Size(249, 21);
+            this.btn_filter.TabIndex = 8;
+            this.btn_filter.Text = "Filter Student by Assessment Component";
+            this.btn_filter.UseVisualStyleBackColor = false;
+            this.btn_filter.Click += new System.EventHandler(this.btn_filter_Click);
+            // 
+            // btn_MarkAssessment
+            // 
+            this.btn_MarkAssessment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_MarkAssessment.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_MarkAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_MarkAssessment.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_MarkAssessment.Location = new System.Drawing.Point(513, 148);
+            this.btn_MarkAssessment.Name = "btn_MarkAssessment";
+            this.btn_MarkAssessment.Size = new System.Drawing.Size(182, 21);
+            this.btn_MarkAssessment.TabIndex = 5;
+            this.btn_MarkAssessment.Text = "Mark Assessment of All Students";
+            this.btn_MarkAssessment.UseVisualStyleBackColor = false;
+            this.btn_MarkAssessment.Click += new System.EventHandler(this.btn_MarkAssessment_Click);
             // 
             // tableLayoutPanel2
             // 

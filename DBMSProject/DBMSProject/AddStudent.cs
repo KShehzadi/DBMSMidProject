@@ -79,6 +79,7 @@ namespace DBMSProject
                 tb_RegNo.Text = Convert.ToString(dataGridView1[5, e.RowIndex].Value);
                 cb_status.SelectedValue = Convert.ToInt32(dataGridView1[6, e.RowIndex].Value);
                 btn_insert.Text = "Update";
+                return;
             }
             else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                e.RowIndex >= 0 && senderGrid.Columns[e.ColumnIndex].HeaderText == "Delete")

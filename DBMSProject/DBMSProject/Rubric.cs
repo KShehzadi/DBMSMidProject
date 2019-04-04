@@ -40,7 +40,11 @@ namespace DBMSProject
                 cb_clo.DisplayMember = "name";
                 cb_clo.ValueMember = "id";
                 cb_clo.DataSource = ds.Tables["Clo"];
-           
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[3, i].Value = Connection.getCloNamebyId(Convert.ToInt32(dataGridView1[2, i].Value));
+            }
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -285,6 +289,11 @@ namespace DBMSProject
             btn_rubric.Text = "Add Rubric";
             panel2.Controls.Clear();
             panel1.Controls.Clear();
+
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[3, i].Value = Connection.getCloNamebyId(Convert.ToInt32(dataGridView1[2, i].Value));
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -360,6 +369,10 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[3, i].Value = Connection.getCloNamebyId(Convert.ToInt32(dataGridView1[2, i].Value));
+            }
 
         }
     }

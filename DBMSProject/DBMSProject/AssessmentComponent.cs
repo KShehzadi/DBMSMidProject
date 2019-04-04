@@ -42,14 +42,14 @@ namespace DBMSProject
             cb_Assessment.DisplayMember = "Title";
             cb_Assessment.ValueMember = "id";
             cb_Assessment.DataSource = ds.Tables["assessment"];
-
-
-
-
-           
-
-
-
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[8, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[2, i].Value));
+            }
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[7, i].Value = Connection.getAssessmentNamebyId(Convert.ToInt32(dataGridView1[6, i].Value));
+            }
         }
 
         private void lbl_index_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -142,6 +142,14 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[8, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[2, i].Value));
+            }
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[7, i].Value = Connection.getAssessmentNamebyId(Convert.ToInt32(dataGridView1[6, i].Value));
+            }
             btn_add.Text = "Insert";
             
         }
@@ -197,6 +205,14 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[8, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[2, i].Value));
+            }
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[7, i].Value = Connection.getAssessmentNamebyId(Convert.ToInt32(dataGridView1[6, i].Value));
+            }
         }
 
         private void btn_Fetch_Click(object sender, EventArgs e)
@@ -211,6 +227,14 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[8, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[2, i].Value));
+            }
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[7, i].Value = Connection.getAssessmentNamebyId(Convert.ToInt32(dataGridView1[6, i].Value));
+            }
         }
 
         private void cb_Assessment_SelectedIndexChanged(object sender, EventArgs e)

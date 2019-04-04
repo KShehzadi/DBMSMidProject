@@ -60,6 +60,10 @@ namespace DBMSProject
             SqlDataReader reader = commandf.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[4, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[1, i].Value));
+            }
             dataGridView1.DataSource = dt;
         }
 
@@ -91,6 +95,10 @@ namespace DBMSProject
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1[4, i].Value = Connection.getRubricNamebyId(Convert.ToInt32(dataGridView1[1, i].Value));
+            }
         }
 
         private void btn_filter_Click(object sender, EventArgs e)
