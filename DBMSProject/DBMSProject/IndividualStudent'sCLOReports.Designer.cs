@@ -77,6 +77,7 @@
             // cb_Student
             // 
             this.cb_Student.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cb_Student.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Student.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cb_Student.FormattingEnabled = true;
             this.cb_Student.Location = new System.Drawing.Point(126, 3);
